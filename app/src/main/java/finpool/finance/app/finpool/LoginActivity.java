@@ -9,13 +9,18 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import com.daimajia.androidanimations.library.Techniques;
+import com.daimajia.androidanimations.library.YoYo;
 
 public class LoginActivity extends AppCompatActivity {
 
     EditText userNameEditText, passwordEditText;
+    TextView headingText;
 
-    final String userName= "priyank",password="12345678";
+    final String userName = "priyank", password = "12345678";
 
 
     @Override
@@ -26,15 +31,13 @@ public class LoginActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
 
-        userNameEditText = findViewById(R.id.login_userName_editText);
-        passwordEditText = findViewById(R.id.login_password_editText);
+        userNameEditText = (EditText) findViewById(R.id.login_userName_editText);
+        passwordEditText = (EditText) findViewById(R.id.login_password_editText);
+        headingText = (TextView) findViewById(R.id.login_finpool_textview);
 
 
-
-
-
-
-
+        YoYo.with(Techniques.RubberBand).duration(700)
+                .playOn(headingText);
 
 
     }
@@ -44,9 +47,9 @@ public class LoginActivity extends AppCompatActivity {
 
         Toast.makeText(this, "Logging in", Toast.LENGTH_SHORT).show();
 
-        if (userNameEditText.getText().toString().equalsIgnoreCase(userName)){
+        if (userNameEditText.getText().toString().equalsIgnoreCase(userName)) {
 
-            if (passwordEditText.getText().toString().equalsIgnoreCase(password)){
+            if (passwordEditText.getText().toString().equalsIgnoreCase(password)) {
 
                 openMenuActivity();
 
@@ -59,7 +62,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private void openMenuActivity() {
 
-        Intent intent = new Intent(this,MainActivity.class);
+        Intent intent = new Intent(this, MainActivity.class);
 
         startActivity(intent);
 
