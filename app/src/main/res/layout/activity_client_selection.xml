@@ -26,8 +26,139 @@
         android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
+        app:layout_anchor="@id/clientActivity_bottom_sheet"
+        app:layout_anchorGravity="end|top"
+        android:layout_marginBottom="24dp"
         android:layout_margin="@dimen/fab_margin"
+        android:visibility="gone"
         app:srcCompat="@android:drawable/ic_dialog_email" />
+
+
+    <LinearLayout
+        android:id="@+id/clientActivity_bottom_sheet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:clipToPadding="true"
+        android:orientation="vertical"
+        app:behavior_hideable="true"
+        app:behavior_peekHeight="0dp"
+        app:elevation="10dp"
+        app:layout_behavior="android.support.design.widget.BottomSheetBehavior">
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textAlignment="center"
+            android:id="@+id/clientActivity_bottomsheet_heading"
+            android:fontFamily="serif"
+            android:text="Select Report to show for "
+            android:layout_margin="8dp"
+            android:textColor="@color/colorWhite"
+            />
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_margin="4dp"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textAlignment="center"
+                android:fontFamily="serif"
+                android:text="Mutual Fund Report"
+                android:layout_margin="8dp"
+                android:onClick="onMFReportClick"
+                android:textColor="@color/textColor"
+                />
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_margin="4dp"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textAlignment="center"
+                android:fontFamily="serif"
+                android:text="Wealth Report"
+                android:onClick="onWealthReportClick"
+                android:layout_margin="8dp"
+                android:textColor="@color/textColor"
+                />
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_margin="4dp"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textAlignment="center"
+                android:fontFamily="serif"
+                android:onClick="onTransactionReportClick"
+
+                android:text="Transaction Report"
+                android:layout_margin="8dp"
+                android:textColor="@color/textColor"
+                />
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_margin="4dp"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textAlignment="center"
+                android:fontFamily="serif"
+                android:onClick="onSIPReportClick"
+                android:text="SIP Report"
+                android:layout_margin="8dp"
+                android:textColor="@color/textColor"
+                />
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_margin="4dp"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textAlignment="center"
+                android:fontFamily="serif"
+                android:text="Reversal Report"
+                android:onClick="onReversalReportClick"
+                android:layout_margin="8dp"
+                android:textColor="@color/textColor"
+                />
+
+        </android.support.v7.widget.CardView>
+
+
+
+
+    </LinearLayout>
+
 
 </android.support.design.widget.CoordinatorLayout>

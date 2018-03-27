@@ -25,7 +25,7 @@ import finpool.finance.app.finpool.R;
 public class ClientAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     Context context;
-    private ArrayList<String> clientArrayList;
+    private ArrayList<Client> clientArrayList;
 
 
     ClickListener clickListener;
@@ -39,12 +39,20 @@ public class ClientAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
             title = view.findViewById(R.id.clientAdapter_title_textView);
 
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (clickListener!=null){
+                        clickListener.onItemClick(getAdapterPosition(),view);
+                    }
+                }
+            });
 
         }
     }
 
 
-    public ClientAdapter(ArrayList<String> clientArrayList, Context context) {
+    public ClientAdapter(ArrayList<Client> clientArrayList, Context context) {
         this.clientArrayList = clientArrayList;
         this.context = context;
     }
@@ -68,7 +76,7 @@ public class ClientAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
         ClientViewHolder clientViewHolder = (ClientViewHolder) holder;
 
-        clientViewHolder.title.setText(clientArrayList.get(position));
+        clientViewHolder.title.setText(clientArrayList.get(position).getName());
 
 
     }
@@ -84,9 +92,7 @@ public class ClientAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
 
     public interface ClickListener {
-        public void onBookMarkClick(View view, int position);
-
-        public void onTitleClick(View view, int position);
+       public void onItemClick(int position, View view);
     }
 
 }

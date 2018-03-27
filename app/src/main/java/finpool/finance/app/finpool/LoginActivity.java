@@ -51,11 +51,18 @@ public class LoginActivity extends AppCompatActivity {
 
             if (passwordEditText.getText().toString().equalsIgnoreCase(password)) {
 
-                openMenuActivity();
+
+
+
 
             }
 
         }
+
+        openMenuActivity();
+
+        YoYo.with(Techniques.Bounce).duration(700)
+                .playOn(view);
 
 
     }
