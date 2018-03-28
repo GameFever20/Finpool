@@ -1,6 +1,5 @@
 package finpool.finance.app.finpool;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -21,49 +20,49 @@ import org.json.JSONArray;
 
 import java.util.ArrayList;
 
-import utils.ClientAdapter;
 import utils.JsonParser;
-import utils.MFTransaction;
-import utils.MFTransactionAdapter;
+import utils.ReversalTransaction;
+import utils.ReversalTransactionAdapter;
+import utils.SipTransaction;
+import utils.SipTransactionAdapter;
 import utils.VolleyManager;
 
 import static android.content.ContentValues.TAG;
 
-public class MFReportActivity extends AppCompatActivity {
+public class ReversalReportActivity extends AppCompatActivity {
 
-    RecyclerView recyclerView;
-    private MFTransactionAdapter mfTransactionAdapter;
-    ArrayList<MFTransaction> mfTransactionArrayList = new ArrayList<>();
-    private String client;
-
+    private RecyclerView recyclerView;
+    private ReversalTransactionAdapter reversalTransactionAdapter;
+    ArrayList<ReversalTransaction> reversalTransactionArrayList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mfreport);
+        setContentView(R.layout.activity_reversal_report);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        client = getIntent().getStringExtra("client");
+        String client = getIntent().getStringExtra("client");
         String group = getIntent().getStringExtra("id");
-        fetchMFTransaction(client,group);
+        fetchReversalReportTransaction(client,group);
 
-        recyclerView = findViewById(R.id.mfReport_recyclerView);
+        recyclerView = findViewById(R.id.reversalReport_recyclerView);
 
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
-        mfTransactionAdapter = new MFTransactionAdapter(mfTransactionArrayList, this);
+        reversalTransactionAdapter = new ReversalTransactionAdapter(reversalTransactionArrayList, this);
 
-        recyclerView.setAdapter(mfTransactionAdapter);
-
+        recyclerView.setAdapter(reversalTransactionAdapter);
     }
 
+    private void fetchReversalReportTransaction(String clientId, String groupId) {
 
-    public void fetchMFTransaction(final String clientId, String groupId) {
+        String url = "http://choureywealthcreation.com/admin/sdevloop/swealth/app/clientrev.php?id="+groupId+"&cid="+clientId;
 
-        String url = "http://choureywealthcreation.com/admin/sdevloop/swealth/app/mobileval.php?id="+groupId+"&client=" + clientId;
+
+
 
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONArray>() {
@@ -72,28 +71,12 @@ public class MFReportActivity extends AppCompatActivity {
 
                         Log.d(TAG, "onResponse: " + response);
 
-                        mfTransactionArrayList = new JsonParser().parseMFTransactionList(response);
-                        mfTransactionAdapter = new MFTransactionAdapter(mfTransactionArrayList, MFReportActivity.this);
+                        reversalTransactionArrayList = new JsonParser().parseReversalTransactionList(response);
+                        reversalTransactionAdapter = new ReversalTransactionAdapter(reversalTransactionArrayList, ReversalReportActivity.this);
 
-                        Log.d(TAG, "onResponse: " + mfTransactionArrayList);
+                        Log.d(TAG, "onResponse: " + reversalTransactionArrayList);
 
-                        recyclerView.setAdapter(mfTransactionAdapter);
-
-                        mfTransactionAdapter.setClickListener(new MFTransactionAdapter.ClickListener() {
-
-                            @Override
-                            public void onItemClick(View view, int position) {
-
-                                Intent intent = new Intent(MFReportActivity.this,MFReportDetailActivity.class);
-
-                                intent.putExtra("client", client);
-                                intent.putExtra("transaction",mfTransactionArrayList.get(position));
-
-
-                                startActivity(intent);
-
-                            }
-                        });
+                        recyclerView.setAdapter(reversalTransactionAdapter);
 
 
                     }

@@ -1,10 +1,12 @@
 package utils;
 
+import java.io.Serializable;
+
 /**
  * Created by bunny on 25/03/18.
  */
 
-public class MFTransaction {
+public class MFTransaction implements Serializable {
 
     String folio_no, scheme, cagr, amount,nav, currentValue, absReturn, divPay, divInvest, name, traddate, navdate, prodcode, gain;
 

@@ -6,7 +6,7 @@ package utils;
 
 public class ReversalTransaction {
 
-    String name, heading, amount, reversalDate;
+    String name, scheme, amount, reversalDate;
 
     public ReversalTransaction() {
     }
@@ -19,12 +19,12 @@ public class ReversalTransaction {
         this.name = name;
     }
 
-    public String getHeading() {
-        return heading;
+    public String getScheme() {
+        return scheme;
     }
 
-    public void setHeading(String heading) {
-        this.heading = heading;
+    public void setScheme(String scheme) {
+        this.scheme = scheme;
     }
 
     public String getAmount() {

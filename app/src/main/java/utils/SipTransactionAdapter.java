@@ -69,8 +69,8 @@ public class SipTransactionAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
         SipTransaction sipTransaction = sipTransactionArrayList.get(position);
 
-        viewHolder.headingTextView.setText(sipTransaction.getHeading());
-        viewHolder.idTextView.setText(sipTransaction.getId());
+        viewHolder.headingTextView.setText(sipTransaction.getScheme());
+        viewHolder.idTextView.setText(sipTransaction.getFolio_no());
         viewHolder.sipAmountTextView.setText(sipTransaction.getSipAmount());
         viewHolder.currentInvTextView.setText(sipTransaction.getCurrentInvestment());
         viewHolder.currentValueTextView.setText(sipTransaction.getCurrentValue());

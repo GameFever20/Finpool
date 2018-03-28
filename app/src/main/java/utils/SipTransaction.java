@@ -6,25 +6,26 @@ package utils;
 
 public class SipTransaction {
 
-    String id, heading, sipAmount, currentInvestment, currentValue, absReturn, divPay, divInvest;
+    String folio_no, scheme, sipAmount, currentInvestment, currentValue, absReturn, divPay, divInvest;
 
     public SipTransaction() {
     }
 
-    public String getId() {
-        return id;
+
+    public String getFolio_no() {
+        return folio_no;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setFolio_no(String folio_no) {
+        this.folio_no = folio_no;
     }
 
-    public String getHeading() {
-        return heading;
+    public String getScheme() {
+        return scheme;
     }
 
-    public void setHeading(String heading) {
-        this.heading = heading;
+    public void setScheme(String scheme) {
+        this.scheme = scheme;
     }
 
     public String getSipAmount() {

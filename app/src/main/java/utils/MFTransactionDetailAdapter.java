@@ -15,10 +15,10 @@ import finpool.finance.app.finpool.R;
  * Created by bunny on 23/03/18.
  */
 
-public class MFTransactionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class MFTransactionDetailAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     Context context;
-    private ArrayList<MFTransaction> mfTransactionArrayList;
+    private ArrayList<MFTransactionDetail> mfTransactionArrayList;
 
 
     ClickListener clickListener;
@@ -41,20 +41,11 @@ public class MFTransactionAdapter extends RecyclerView.Adapter<RecyclerView.View
             nameTextView = view.findViewById(R.id.mfAdapter_name_textView);
             sinceDateTextView = view.findViewById(R.id.mfAdapter_since_textView);
 
-            view.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if (clickListener != null) {
-                        clickListener.onItemClick(view, getAdapterPosition());
-                    }
-                }
-            });
-
         }
     }
 
 
-    public MFTransactionAdapter(ArrayList<MFTransaction> mfTransactionArrayList, Context context) {
+    public MFTransactionDetailAdapter(ArrayList<MFTransactionDetail> mfTransactionArrayList, Context context) {
         this.mfTransactionArrayList = mfTransactionArrayList;
         this.context = context;
     }
@@ -64,7 +55,7 @@ public class MFTransactionAdapter extends RecyclerView.Adapter<RecyclerView.View
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.mf_transaction_adapter_row_layout, parent, false);
+                .inflate(R.layout.mf_transaction_detail_adapter_row_layout, parent, false);
 
 
         return new ClientViewHolder(itemView);
@@ -78,19 +69,19 @@ public class MFTransactionAdapter extends RecyclerView.Adapter<RecyclerView.View
 
         ClientViewHolder viewHolder = (ClientViewHolder) holder;
 
-        MFTransaction mfTransaction = mfTransactionArrayList.get(position);
+        MFTransactionDetail mfTransaction = mfTransactionArrayList.get(position);
 
-        viewHolder.headingTextView.setText(mfTransaction.getScheme());
-        viewHolder.idTextView.setText(mfTransaction.getFolio_no());
+        viewHolder.headingTextView.setText(mfTransaction.getTradeDate());
+        viewHolder.idTextView.setText(mfTransaction.getUnits());
         viewHolder.cagrTextView.setText(mfTransaction.getCagr());
         viewHolder.currentInvTextView.setText(mfTransaction.getAmount());
-        viewHolder.currentValueTextView.setText(mfTransaction.getCurrentValue());
-        viewHolder.absReturnTextView.setText(mfTransaction.getAbsReturn());
+        viewHolder.currentValueTextView.setText(mfTransaction.getValuation());
+        viewHolder.absReturnTextView.setText(mfTransaction.getAbs());
         viewHolder.divPayTextView.setText(mfTransaction.getDivPay());
         viewHolder.divInvTextView.setText(mfTransaction.getDivInvest());
 
-        viewHolder.nameTextView.setText(mfTransaction.getName());
-        viewHolder.sinceDateTextView.setText(mfTransaction.getTraddate());
+        viewHolder.nameTextView.setText(mfTransaction.getSensex());
+        viewHolder.sinceDateTextView.setText(mfTransaction.getPurchase());
 
     }
 
@@ -105,9 +96,9 @@ public class MFTransactionAdapter extends RecyclerView.Adapter<RecyclerView.View
 
 
     public interface ClickListener {
-        public void onItemClick(View view, int position);
+        public void onBookMarkClick(View view, int position);
 
-
+        public void onTitleClick(View view, int position);
     }
 
 }

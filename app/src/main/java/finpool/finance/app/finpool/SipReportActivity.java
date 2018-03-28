@@ -1,6 +1,5 @@
 package finpool.finance.app.finpool;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -21,49 +20,51 @@ import org.json.JSONArray;
 
 import java.util.ArrayList;
 
-import utils.ClientAdapter;
 import utils.JsonParser;
 import utils.MFTransaction;
 import utils.MFTransactionAdapter;
+import utils.SipTransaction;
+import utils.SipTransactionAdapter;
 import utils.VolleyManager;
 
 import static android.content.ContentValues.TAG;
 
-public class MFReportActivity extends AppCompatActivity {
+public class SipReportActivity extends AppCompatActivity {
 
-    RecyclerView recyclerView;
-    private MFTransactionAdapter mfTransactionAdapter;
-    ArrayList<MFTransaction> mfTransactionArrayList = new ArrayList<>();
-    private String client;
-
+    private RecyclerView recyclerView;
+    private SipTransactionAdapter sipTransactionAdapter;
+    ArrayList<SipTransaction> sipTransactionArrayList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mfreport);
+        setContentView(R.layout.activity_sip_report);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        client = getIntent().getStringExtra("client");
-        String group = getIntent().getStringExtra("id");
-        fetchMFTransaction(client,group);
 
-        recyclerView = findViewById(R.id.mfReport_recyclerView);
+        String client = getIntent().getStringExtra("client");
+        String group = getIntent().getStringExtra("id");
+        fetchSipReportTransaction(client,group);
+
+        recyclerView = findViewById(R.id.sipReport_recyclerView);
 
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
-        mfTransactionAdapter = new MFTransactionAdapter(mfTransactionArrayList, this);
+        sipTransactionAdapter = new SipTransactionAdapter(sipTransactionArrayList, this);
 
-        recyclerView.setAdapter(mfTransactionAdapter);
+        recyclerView.setAdapter(sipTransactionAdapter);
+
 
     }
 
+    private void fetchSipReportTransaction(String clientId, String groupId) {
 
-    public void fetchMFTransaction(final String clientId, String groupId) {
+        String url = "http://choureywealthcreation.com/admin/sdevloop/swealth/app/mobilesip.php?id="+groupId+"&client="+clientId;
 
-        String url = "http://choureywealthcreation.com/admin/sdevloop/swealth/app/mobileval.php?id="+groupId+"&client=" + clientId;
+
 
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONArray>() {
@@ -72,28 +73,12 @@ public class MFReportActivity extends AppCompatActivity {
 
                         Log.d(TAG, "onResponse: " + response);
 
-                        mfTransactionArrayList = new JsonParser().parseMFTransactionList(response);
-                        mfTransactionAdapter = new MFTransactionAdapter(mfTransactionArrayList, MFReportActivity.this);
+                        sipTransactionArrayList = new JsonParser().parseSipTransactionList(response);
+                        sipTransactionAdapter = new SipTransactionAdapter(sipTransactionArrayList, SipReportActivity.this);
 
-                        Log.d(TAG, "onResponse: " + mfTransactionArrayList);
+                        Log.d(TAG, "onResponse: " + sipTransactionArrayList);
 
-                        recyclerView.setAdapter(mfTransactionAdapter);
-
-                        mfTransactionAdapter.setClickListener(new MFTransactionAdapter.ClickListener() {
-
-                            @Override
-                            public void onItemClick(View view, int position) {
-
-                                Intent intent = new Intent(MFReportActivity.this,MFReportDetailActivity.class);
-
-                                intent.putExtra("client", client);
-                                intent.putExtra("transaction",mfTransactionArrayList.get(position));
-
-
-                                startActivity(intent);
-
-                            }
-                        });
+                        recyclerView.setAdapter(sipTransactionAdapter);
 
 
                     }

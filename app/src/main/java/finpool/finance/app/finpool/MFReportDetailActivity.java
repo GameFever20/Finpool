@@ -1,6 +1,5 @@
 package finpool.finance.app.finpool;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -21,49 +20,48 @@ import org.json.JSONArray;
 
 import java.util.ArrayList;
 
-import utils.ClientAdapter;
 import utils.JsonParser;
 import utils.MFTransaction;
 import utils.MFTransactionAdapter;
+import utils.MFTransactionDetail;
+import utils.MFTransactionDetailAdapter;
 import utils.VolleyManager;
 
 import static android.content.ContentValues.TAG;
 
-public class MFReportActivity extends AppCompatActivity {
+public class MFReportDetailActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
-    private MFTransactionAdapter mfTransactionAdapter;
-    ArrayList<MFTransaction> mfTransactionArrayList = new ArrayList<>();
-    private String client;
-
+    private MFTransactionDetailAdapter mfTransactionDetailAdapter;
+    ArrayList<MFTransactionDetail> mfTransactionDetailArrayList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mfreport);
+        setContentView(R.layout.activity_mfreport_detail);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        client = getIntent().getStringExtra("client");
-        String group = getIntent().getStringExtra("id");
-        fetchMFTransaction(client,group);
+        String client = getIntent().getStringExtra("client");
+        MFTransaction mfTransaction = (MFTransaction) getIntent().getSerializableExtra("transaction");
 
-        recyclerView = findViewById(R.id.mfReport_recyclerView);
+        fetchMFTransaction(client, mfTransaction.getProdcode(), mfTransaction.getFolio_no());
+
+        recyclerView = findViewById(R.id.mfReport_detail_recyclerView);
 
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
-        mfTransactionAdapter = new MFTransactionAdapter(mfTransactionArrayList, this);
+        mfTransactionDetailAdapter = new MFTransactionDetailAdapter(mfTransactionDetailArrayList, this);
 
-        recyclerView.setAdapter(mfTransactionAdapter);
-
+        recyclerView.setAdapter(mfTransactionDetailAdapter);
     }
 
+    public void fetchMFTransaction(String clientId, String prodCode, String folioNo) {
 
-    public void fetchMFTransaction(final String clientId, String groupId) {
+        String url = "http://choureywealthcreation.com/admin/sdevloop/swealth/app/mobilevalbrief.php?id=&client="+clientId+"&FOLIO_NO="+folioNo+"&PRODCODE="+prodCode;
 
-        String url = "http://choureywealthcreation.com/admin/sdevloop/swealth/app/mobileval.php?id="+groupId+"&client=" + clientId;
 
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONArray>() {
@@ -72,28 +70,12 @@ public class MFReportActivity extends AppCompatActivity {
 
                         Log.d(TAG, "onResponse: " + response);
 
-                        mfTransactionArrayList = new JsonParser().parseMFTransactionList(response);
-                        mfTransactionAdapter = new MFTransactionAdapter(mfTransactionArrayList, MFReportActivity.this);
+                        mfTransactionDetailArrayList = new JsonParser().parseMFTransactionDetailList(response);
+                        mfTransactionDetailAdapter = new MFTransactionDetailAdapter(mfTransactionDetailArrayList, MFReportDetailActivity.this);
 
-                        Log.d(TAG, "onResponse: " + mfTransactionArrayList);
+                        Log.d(TAG, "onResponse: " + mfTransactionDetailArrayList);
 
-                        recyclerView.setAdapter(mfTransactionAdapter);
-
-                        mfTransactionAdapter.setClickListener(new MFTransactionAdapter.ClickListener() {
-
-                            @Override
-                            public void onItemClick(View view, int position) {
-
-                                Intent intent = new Intent(MFReportActivity.this,MFReportDetailActivity.class);
-
-                                intent.putExtra("client", client);
-                                intent.putExtra("transaction",mfTransactionArrayList.get(position));
-
-
-                                startActivity(intent);
-
-                            }
-                        });
+                        recyclerView.setAdapter(mfTransactionDetailAdapter);
 
 
                     }

@@ -66,7 +66,7 @@ public class ReversalTransactionAdapter extends RecyclerView.Adapter<RecyclerVie
 
         ReversalTransaction reversalTransaction = reversalTransactionArrayList.get(position);
 
-        viewHolder.titleTextView.setText(reversalTransaction.getHeading());
+        viewHolder.titleTextView.setText(reversalTransaction.getScheme());
         viewHolder.nameTextView.setText(reversalTransaction.getName());
         viewHolder.amountTextView.setText(reversalTransaction.getAmount());
         viewHolder.reversalDateTextView.setText(reversalTransaction.getReversalDate());

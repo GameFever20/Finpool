@@ -26,7 +26,7 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_main"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".PortfolioActivity"
             android:label="@string/title_activity_portfolio"
@@ -43,6 +43,18 @@
         <activity
             android:name=".MFReportActivity"
             android:label="@string/title_activity_mfreport"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".SipReportActivity"
+            android:label="@string/title_activity_sip_report"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ReversalReportActivity"
+            android:label="@string/title_activity_reversal_report"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".MFReportDetailActivity"
+            android:label="@string/title_activity_mfreport_detail"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

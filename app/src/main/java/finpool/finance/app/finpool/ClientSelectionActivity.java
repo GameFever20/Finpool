@@ -144,6 +144,14 @@ public class ClientSelectionActivity extends AppCompatActivity {
                         Log.d(TAG, "onResponse: " + response);
 
                         groupArrayList = new JsonParser().parseGroupList(response);
+
+                        Client client = new Client();
+                        client.setName("All");
+                        client.setId("");
+
+                        groupArrayList.add(0,client);
+
+
                         groupAdapter = new ClientAdapter(groupArrayList, ClientSelectionActivity.this);
 
                         groupAdapter.setClickListener(new ClientAdapter.ClickListener() {
@@ -193,6 +201,12 @@ public class ClientSelectionActivity extends AppCompatActivity {
 
                         clientArrayList = new JsonParser().parseGroupDetails(response);
 
+                        Client client = new Client();
+                        client.setName("All");
+                        client.setId("");
+
+                        clientArrayList.add(0,client);
+
                         clientAdapter = new ClientAdapter(clientArrayList, ClientSelectionActivity.this);
 
                         Log.d(TAG, "onResponse: " + groupArrayList);
@@ -206,6 +220,9 @@ public class ClientSelectionActivity extends AppCompatActivity {
                                 mBottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
                                 headingBottomSheetTextView.setText("Select Report to show for " + clientArrayList.get(position));
 
+                                if (position!=0){
+                                    selectedGroup="";
+                                }
                                 selectedClient = clientArrayList.get(position).getId();
 
                             }
@@ -255,16 +272,22 @@ public class ClientSelectionActivity extends AppCompatActivity {
     }
 
     public void onSIPReportClick(View view) {
+        Intent intent = new Intent(this, SipReportActivity.class);
 
+        onReportClick(intent);
     }
 
     public void onReversalReportClick(View view) {
+
+        Intent intent = new Intent(this, ReversalReportActivity.class);
+
+        onReportClick(intent);
 
     }
 
     public void onReportClick(Intent intent) {
 
-        intent.putExtra("id", "");
+        intent.putExtra("id", selectedGroup);
         intent.putExtra("client",selectedClient );
 
         startActivity(intent);
