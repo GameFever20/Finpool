@@ -40,6 +40,7 @@ public class LoginActivity extends AppCompatActivity {
                 .playOn(headingText);
 
 
+
     }
 
 
