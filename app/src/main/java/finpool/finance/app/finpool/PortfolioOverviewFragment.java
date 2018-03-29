@@ -1,12 +1,28 @@
 package finpool.finance.app.finpool;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+
+import org.json.JSONArray;
+
+import utils.JsonParser;
+import utils.MFTransactionAdapter;
+import utils.PortfolioData;
+import utils.VolleyManager;
+
+import static android.content.ContentValues.TAG;
 
 
 /**
@@ -21,6 +37,8 @@ public class PortfolioOverviewFragment extends Fragment {
 
 
     private OnFragmentInteractionListener mListener;
+
+    PortfolioData portfolioData;
 
     public PortfolioOverviewFragment() {
     }
@@ -39,6 +57,43 @@ public class PortfolioOverviewFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
 
+        fetchPortfolioOverView();
+
+
+    }
+
+    private void fetchPortfolioOverView() {
+
+        String url = "http://choureywealthcreation.com/admin/sdevloop/swealth/app/abtobusmanytwomobile.php";
+
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+
+                        Log.d(TAG, "onResponse: " + response);
+
+                        portfolioData = new JsonParser().parsePortFolioData(response);
+
+                        Log.d(TAG, "onResponse: "+portfolioData);
+
+
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                        Log.d(TAG, "onErrorResponse: " + error);
+
+                    }
+                });
+
+
+        jsonArrayRequest.setShouldCache(true);
+
+        VolleyManager.getInstance().addToRequestQueue(jsonArrayRequest, "Group request");
 
 
     }

@@ -71,7 +71,7 @@ public class JsonParser {
 
             for (int i = 0; i < jsonArray.length(); i++) {
 
-                if (i==jsonArray.length()-1) {
+                if (i == jsonArray.length() - 1) {
 
                     mfTransaction = new MFTransaction();
                     JSONObject jsonObject = jsonArray.getJSONObject(i);
@@ -112,7 +112,6 @@ public class JsonParser {
                 mfTransaction.setAbsReturn(jsonObject.getString("abs"));
 
 
-
                 mfTransactionArrayList.add(mfTransaction);
 
 
@@ -135,7 +134,6 @@ public class JsonParser {
             for (int i = 0; i < jsonArray.length(); i++) {
 
 
-
                 mfTransactionDetail = new MFTransactionDetail();
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
 
@@ -151,10 +149,6 @@ public class JsonParser {
                 mfTransactionDetail.setSpan(jsonObject.getString("SPAN"));
                 mfTransactionDetail.setCagr(jsonObject.getString("CARG"));
                 mfTransactionDetail.setAbs(jsonObject.getString("ABS"));
-
-
-
-
 
 
                 mfTransactionDetailArrayList.add(mfTransactionDetail);
@@ -179,7 +173,7 @@ public class JsonParser {
 
             for (int i = 0; i < jsonArray.length(); i++) {
 
-                if (i==jsonArray.length()-1){
+                if (i == jsonArray.length() - 1) {
 
                     sipTransaction = new SipTransaction();
                     JSONObject jsonObject = jsonArray.getJSONObject(i);
@@ -198,8 +192,6 @@ public class JsonParser {
 
                     break;
                 }
-
-
 
 
                 sipTransaction = new SipTransaction();
@@ -237,7 +229,7 @@ public class JsonParser {
             for (int i = 0; i < jsonArray.length(); i++) {
 
 
-                if (i==jsonArray.length()-1){
+                if (i == jsonArray.length() - 1) {
 
                     reversalTransaction = new ReversalTransaction();
                     JSONObject jsonObject = jsonArray.getJSONObject(i);
@@ -273,6 +265,51 @@ public class JsonParser {
 
     }
 
+
+    public PortfolioData parsePortFolioData(JSONArray jsonArray) {
+
+        PortfolioData portfolioData = new PortfolioData();
+
+        try {
+
+
+            JSONObject jsonObject = jsonArray.getJSONObject(0);
+
+            portfolioData.setSip(jsonObject.getString("sip"));
+            portfolioData.setReverse(jsonObject.getString("reverse"));
+
+            portfolioData.setTotal(jsonObject.getString("total"));
+            portfolioData.setEquity(jsonObject.getString("equity"));
+            portfolioData.setBalance(jsonObject.getString("balance"));
+            portfolioData.setCash(jsonObject.getString("cash"));
+            portfolioData.setOthers(jsonObject.getString("others"));
+            portfolioData.setDebt(jsonObject.getString("debt"));
+
+            portfolioData.setValTotal(jsonObject.getString("valtotal"));
+            portfolioData.setValEquity(jsonObject.getString("valequity"));
+            portfolioData.setValBalance(jsonObject.getString("valbalance"));
+            portfolioData.setValCash(jsonObject.getString("valcash"));
+            portfolioData.setValOthers(jsonObject.getString("valothers"));
+            portfolioData.setValDebt(jsonObject.getString("valdebt"));
+
+            portfolioData.setClient(jsonObject.getString("clients"));
+            portfolioData.setDate(jsonObject.getString("date"));
+
+            portfolioData.setTotper(jsonObject.getString("totper"));
+            portfolioData.setEquper(jsonObject.getString("equper"));
+            portfolioData.setBalper(jsonObject.getString("balper"));
+            portfolioData.setCashper(jsonObject.getString("cashper"));
+            portfolioData.setOthper(jsonObject.getString("othper"));
+            portfolioData.setDebtper(jsonObject.getString("debtper"));
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return portfolioData;
+
+    }
 
 
 }

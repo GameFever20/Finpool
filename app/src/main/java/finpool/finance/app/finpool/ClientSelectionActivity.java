@@ -23,6 +23,11 @@ import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.irozon.alertview.AlertActionStyle;
+import com.irozon.alertview.AlertStyle;
+import com.irozon.alertview.AlertView;
+import com.irozon.alertview.interfaces.AlertActionListener;
+import com.irozon.alertview.objects.AlertAction;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -217,13 +222,17 @@ public class ClientSelectionActivity extends AppCompatActivity {
                             @Override
                             public void onItemClick(int position, View view) {
 
-                                mBottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
-                                headingBottomSheetTextView.setText("Select Report to show for " + clientArrayList.get(position));
+                                //mBottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+                                //headingBottomSheetTextView.setText("Select Report to show for " + clientArrayList.get(position));
+
+
 
                                 if (position!=0){
                                     selectedGroup="";
                                 }
                                 selectedClient = clientArrayList.get(position).getId();
+
+                                showDialogChooser();
 
                             }
                         });
@@ -245,6 +254,68 @@ public class ClientSelectionActivity extends AppCompatActivity {
 
         VolleyManager.getInstance().addToRequestQueue(jsonArrayRequest, "Group request");
 
+
+    }
+
+    private void showDialogChooser() {
+
+        AlertView alert = new AlertView("Select Report to show", "Client - "+selectedClient+" => "+selectedGroup, AlertStyle.IOS);
+
+        alert.addAction(new AlertAction("MF Report", AlertActionStyle.DEFAULT, new AlertActionListener() {
+            @Override
+            public void onActionClick(AlertAction alertAction) {
+
+                onMFReportClick(recyclerView);
+
+            }
+        }));
+
+        alert.addAction(new AlertAction("SIP Report", AlertActionStyle.DEFAULT, new AlertActionListener() {
+            @Override
+            public void onActionClick(AlertAction alertAction) {
+
+                onSIPReportClick(recyclerView);
+
+            }
+        }));
+
+        alert.addAction(new AlertAction("Reversal Report", AlertActionStyle.DEFAULT, new AlertActionListener() {
+            @Override
+            public void onActionClick(AlertAction alertAction) {
+
+                onReversalReportClick(recyclerView);
+
+            }
+        }));
+
+        alert.addAction(new AlertAction("Transaction Report", AlertActionStyle.DEFAULT, new AlertActionListener() {
+            @Override
+            public void onActionClick(AlertAction alertAction) {
+
+                onTransactionReportClick(recyclerView);
+
+            }
+        }));
+
+        alert.addAction(new AlertAction("Wealth Report", AlertActionStyle.DEFAULT, new AlertActionListener() {
+            @Override
+            public void onActionClick(AlertAction alertAction) {
+
+                onWealthReportClick(recyclerView);
+
+            }
+        }));
+
+        alert.addAction(new AlertAction("Cancel", AlertActionStyle.NEGATIVE, new AlertActionListener() {
+            @Override
+            public void onActionClick(AlertAction alertAction) {
+
+
+
+            }
+        }));
+
+        alert.show(this);
 
     }
 
