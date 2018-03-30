@@ -74,6 +74,7 @@ public class SipReportActivity extends AppCompatActivity {
         recyclerView.setAdapter(sipTransactionAdapter);
 
 
+
     }
 
     private void fetchSipReportTransaction(String clientId, String groupId) {
