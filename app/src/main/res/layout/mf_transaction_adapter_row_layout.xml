@@ -34,7 +34,8 @@
                 android:layout_marginTop="4dp"
                 android:text="Reliance Small Cap Fund"
                 android:textColor="@color/headingColor"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/mfAdapter_id_textView"

@@ -45,7 +45,8 @@
                 android:layout_height="wrap_content"
                 android:text="Reliance Small Cap Fund"
                 android:textColor="@color/headingColor"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
 
             <LinearLayout
