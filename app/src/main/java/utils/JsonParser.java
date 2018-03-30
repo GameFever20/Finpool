@@ -311,5 +311,39 @@ public class JsonParser {
 
     }
 
+    public ArrayList<RecentTransaction> parseRecentTransactionList(JSONArray jsonArray) {
+        ArrayList<RecentTransaction> recentTransactionArrayList = new ArrayList<>();
+
+        try {
+
+            RecentTransaction recentTransaction;
+
+            for (int i = 0; i < jsonArray.length(); i++) {
+
+
+
+
+
+                recentTransaction = new RecentTransaction();
+                JSONObject jsonObject = jsonArray.getJSONObject(i);
+
+                recentTransaction.setName(jsonObject.getString("invname"));
+                recentTransaction.setScheme(jsonObject.getString("scheme"));
+                recentTransaction.setAmount(jsonObject.getString("amountto"));
+                recentTransaction.setDate(jsonObject.getString("date"));
+
+                recentTransactionArrayList.add(recentTransaction);
+
+
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return recentTransactionArrayList;
+
+    }
+
+
 
 }

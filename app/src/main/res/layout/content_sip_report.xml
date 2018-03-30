@@ -12,7 +12,7 @@
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp"
+        android:layout_marginBottom="0dp"
         app:cardBackgroundColor="@color/colorPrimary"
         app:cardCornerRadius="0dp"
         app:cardElevation="4dp">
@@ -40,6 +40,7 @@
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="8dp"
                     android:text="ABHISHEK"
+                    android:id="@+id/sipReport_investorName_textView"
                     android:textAlignment="viewStart"
                     android:textAllCaps="true"
                     android:textColor="@color/colorWhite"
@@ -76,6 +77,7 @@
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="8dp"
                     android:text="109000"
+                    android:id="@+id/sipReport_currentInvestment_textView"
                     android:textAlignment="viewEnd"
                     android:textAllCaps="true"
                     android:textColor="@color/colorWhite"
@@ -97,6 +99,8 @@
                     android:textStyle="normal" />
 
             </LinearLayout>
+
+
 
 
         </LinearLayout>
@@ -161,6 +165,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="2000"
+                                android:id="@+id/sipReport_sipAmount_textView"
                                 android:textAlignment="center"
                                 android:textColor="@color/colorWhite"
                                 android:textSize="14sp"
@@ -188,6 +193,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="6"
+                                android:id="@+id/sipReport_sipCount_textView"
                                 android:textAlignment="center"
                                 android:textColor="@color/colorWhite"
                                 android:textSize="14sp"
@@ -215,6 +221,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="1824450"
+                                android:id="@+id/sipReport_currentValue_textView"
                                 android:textAlignment="center"
                                 android:textColor="@color/colorWhite"
                                 android:textSize="14sp"
@@ -252,6 +259,8 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="0"
+                                android:id="@+id/sipReport_divInv_textView"
+
                                 android:textAlignment="center"
                                 android:textColor="@color/colorWhite"
                                 android:textSize="14sp"
@@ -279,6 +288,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="0"
+                                android:id="@+id/sipReport_divPay_textView"
                                 android:textAlignment="center"
                                 android:textColor="@color/colorWhite"
                                 android:textSize="14sp"
@@ -306,6 +316,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="-2.4324"
+                                android:id="@+id/sipReport_absReturn_textView"
                                 android:textAlignment="center"
                                 android:textColor="@color/colorWhite"
                                 android:textSize="14sp"
@@ -326,7 +337,9 @@
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/sipReport_recyclerView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"
+                android:overScrollMode="ifContentScrolls">
 
             </android.support.v7.widget.RecyclerView>
 

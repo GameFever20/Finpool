@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -35,6 +36,10 @@ public class SipReportActivity extends AppCompatActivity {
     private SipTransactionAdapter sipTransactionAdapter;
     ArrayList<SipTransaction> sipTransactionArrayList = new ArrayList<>();
 
+    TextView investorNameTextView, currentInvestmentTextView, sipAmountTextView, sipCountTextView, currentValueTextView, divInvTextView, divPayTextView, absReturnTextView;
+
+    String client;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,9 +48,20 @@ public class SipReportActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
 
-        String client = getIntent().getStringExtra("client");
+        client = getIntent().getStringExtra("client");
         String group = getIntent().getStringExtra("id");
-        fetchSipReportTransaction(client,group);
+        fetchSipReportTransaction(client, group);
+
+
+        investorNameTextView = findViewById(R.id.sipReport_investorName_textView);
+        currentInvestmentTextView = findViewById(R.id.sipReport_currentInvestment_textView);
+        sipAmountTextView = findViewById(R.id.sipReport_sipAmount_textView);
+        sipCountTextView = findViewById(R.id.sipReport_sipCount_textView);
+        currentValueTextView = findViewById(R.id.sipReport_currentValue_textView);
+        divInvTextView = findViewById(R.id.sipReport_divInv_textView);
+        divPayTextView = findViewById(R.id.sipReport_divPay_textView);
+        absReturnTextView = findViewById(R.id.sipReport_absReturn_textView);
+
 
         recyclerView = findViewById(R.id.sipReport_recyclerView);
 
@@ -62,8 +78,7 @@ public class SipReportActivity extends AppCompatActivity {
 
     private void fetchSipReportTransaction(String clientId, String groupId) {
 
-        String url = "http://choureywealthcreation.com/admin/sdevloop/swealth/app/mobilesip.php?id="+groupId+"&client="+clientId;
-
+        String url = "http://choureywealthcreation.com/admin/sdevloop/swealth/app/mobilesip.php?id=" + groupId + "&client=" + clientId;
 
 
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null,
@@ -79,6 +94,8 @@ public class SipReportActivity extends AppCompatActivity {
                         Log.d(TAG, "onResponse: " + sipTransactionArrayList);
 
                         recyclerView.setAdapter(sipTransactionAdapter);
+
+                        refreshUI();
 
 
                     }
@@ -97,6 +114,24 @@ public class SipReportActivity extends AppCompatActivity {
 
         VolleyManager.getInstance().addToRequestQueue(jsonArrayRequest, "Group request");
 
+
+    }
+
+    private void refreshUI() {
+
+        if (sipTransactionArrayList.size() > 0) {
+            SipTransaction sipTransaction = sipTransactionArrayList.get(sipTransactionArrayList.size() - 1);
+
+            investorNameTextView.setText(client);
+            currentInvestmentTextView.setText(sipTransaction.getScheme());
+            sipAmountTextView.setText(sipTransaction.getSipAmount());
+            sipCountTextView.setText(sipTransaction.getFolio_no());
+            currentValueTextView.setText(sipTransaction.getCurrentValue());
+            divInvTextView.setText(sipTransaction.getDivInvest());
+            divPayTextView.setText(sipTransaction.getDivPay());
+            absReturnTextView.setText(sipTransaction.getAbsReturn());
+
+        }
 
     }
 

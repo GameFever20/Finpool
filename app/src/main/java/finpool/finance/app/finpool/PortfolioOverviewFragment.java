@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -39,6 +40,11 @@ public class PortfolioOverviewFragment extends Fragment {
     private OnFragmentInteractionListener mListener;
 
     PortfolioData portfolioData;
+
+    TextView aumDateTextView, activeClientTextView, sipTextView, newSipTextView, totalBalanceTextView, totalInvestedTextView,
+            equityBalanceTextView, equityInvestedTextView, balanceBalanceTextView, balanceInvestedTextView, debtBalanceTextView,
+            debtInvestedTextView, cashBalanceTextView, cashInvestedTextView, otherBalanceTextView, otherInvestedTextView;
+
 
     public PortfolioOverviewFragment() {
     }
@@ -75,9 +81,11 @@ public class PortfolioOverviewFragment extends Fragment {
 
                         portfolioData = new JsonParser().parsePortFolioData(response);
 
-                        Log.d(TAG, "onResponse: "+portfolioData);
+                        Log.d(TAG, "onResponse: " + portfolioData);
 
-
+                        if (aumDateTextView != null) {
+                            refreshUI();
+                        }
 
                     }
                 },
@@ -102,19 +110,65 @@ public class PortfolioOverviewFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        return inflater.inflate(R.layout.fragment_portfolio_overview, container, false);
+        View view = inflater.inflate(R.layout.fragment_portfolio_overview, container, false);
+
+        aumDateTextView = view.findViewById(R.id.portfolioFragment_aumDate_textView);
+        activeClientTextView = view.findViewById(R.id.portfolioFragment_activeClient_textView);
+        sipTextView = view.findViewById(R.id.portfolioFragment_sip_textView);
+        newSipTextView = view.findViewById(R.id.portfolioFragment_newSip_textView);
+        totalBalanceTextView = view.findViewById(R.id.portfolioFragment_totalBalance_textView);
+        totalInvestedTextView = view.findViewById(R.id.portfolioFragment_totalInvested_textView);
+        equityBalanceTextView = view.findViewById(R.id.portfolioFragment_equityBalance_textView);
+        equityInvestedTextView = view.findViewById(R.id.portfolioFragment_equityInvested_textView);
+        balanceBalanceTextView = view.findViewById(R.id.portfolioFragment_balanceBalance_textView);
+        balanceInvestedTextView = view.findViewById(R.id.portfolioFragment_balanceInvested_textView);
+        debtBalanceTextView = view.findViewById(R.id.portfolioFragment_debtBalance_textView);
+        debtInvestedTextView = view.findViewById(R.id.portfolioFragment_debtInvested_textView);
+        cashBalanceTextView = view.findViewById(R.id.portfolioFragment_cashBalance_textView);
+        cashInvestedTextView = view.findViewById(R.id.portfolioFragment_cashInvested_textView);
+        otherBalanceTextView = view.findViewById(R.id.portfolioFragment_otherBalance_textView);
+        otherInvestedTextView = view.findViewById(R.id.portfolioFragment_otherInvested_textView);
+
+
+        refreshUI();
+
+        return view;
+    }
+
+    private void refreshUI() {
+
+        try {
+            aumDateTextView.setText(portfolioData.getDate());
+            activeClientTextView.setText(portfolioData.getClient());
+            sipTextView.setText(portfolioData.getSip());
+            newSipTextView.setText(portfolioData.getReverse());
+            totalBalanceTextView.setText(portfolioData.getValTotal());
+            totalInvestedTextView.setText(portfolioData.getTotal());
+            equityBalanceTextView.setText(portfolioData.getValEquity());
+            equityInvestedTextView.setText(portfolioData.getEquity());
+            balanceBalanceTextView.setText(portfolioData.getValBalance());
+            balanceInvestedTextView.setText(portfolioData.getBalance());
+            debtBalanceTextView.setText(portfolioData.getValDebt());
+            debtInvestedTextView.setText(portfolioData.getDebt());
+            cashBalanceTextView.setText(portfolioData.getValCash());
+            cashInvestedTextView.setText(portfolioData.getCash());
+            otherBalanceTextView.setText(portfolioData.getValOthers());
+            otherInvestedTextView.setText(portfolioData.getBalance());
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 
     public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
+
     }
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-       
+
     }
 
     @Override

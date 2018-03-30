@@ -7,14 +7,26 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+
+import org.json.JSONArray;
+
 import java.util.ArrayList;
 
+import utils.JsonParser;
 import utils.RecentTransaction;
 import utils.RecentTransactionAdapter;
+import utils.VolleyManager;
+
+import static android.content.ContentValues.TAG;
 
 
 /**
@@ -37,10 +49,10 @@ public class PortfolioRecentFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    RecyclerView recentPurchaseRecyclerView, recentRedemptionRecyclerView, recentSipPurchaseRecyclerView;
-    ArrayList<RecentTransaction> recentPurchaseArrayList = new ArrayList<>(), recentRedemptionArrayList = new ArrayList<>(), recentSipPurchaseArrayList = new ArrayList<>();
+    RecyclerView recentPurchaseRecyclerView, recentRedemptionRecyclerView, recentSipPurchaseRecyclerView, recentSuspendRecyclerView;
+    ArrayList<RecentTransaction> recentPurchaseArrayList = new ArrayList<>(), recentRedemptionArrayList = new ArrayList<>(), recentSipPurchaseArrayList = new ArrayList<>(), recentSuspendArrayList = new ArrayList<>();
 
-    RecentTransactionAdapter recentPurchaseAdapter, recentRedemptionAdapter, recentSipPurchaseAdapter;
+    RecentTransactionAdapter recentPurchaseAdapter, recentRedemptionAdapter, recentSipPurchaseAdapter, recentSuspendAdapter;
 
 
     public PortfolioRecentFragment() {
@@ -68,18 +80,185 @@ public class PortfolioRecentFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
 
+        fetchRecentPurchase();
+        fetchRecentRedemption();
+        fetchSipPurchase();
+        fetchRecentSuspend();
 
         recentPurchaseAdapter = new RecentTransactionAdapter(recentPurchaseArrayList, getContext());
         recentRedemptionAdapter = new RecentTransactionAdapter(recentRedemptionArrayList, getContext());
         recentSipPurchaseAdapter = new RecentTransactionAdapter(recentSipPurchaseArrayList, getContext());
+        recentSuspendAdapter = new RecentTransactionAdapter(recentSuspendArrayList, getContext());
 
 
     }
+
+    private void fetchRecentSuspend() {
+
+
+        String url = "http://choureywealthcreation.com/admin/sdevloop/swealth/app/apprsuspend.php";
+
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+
+                        Log.d(TAG, "onResponse: " + response);
+
+                        recentSuspendArrayList = new JsonParser().parseRecentTransactionList(response);
+
+                        recentSuspendAdapter = new RecentTransactionAdapter(recentSuspendArrayList, getContext());
+
+                        recentSuspendRecyclerView.setAdapter(recentSuspendAdapter);
+
+
+                        refreshUI();
+
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                        Log.d(TAG, "onErrorResponse: " + error);
+
+                    }
+                });
+
+
+        jsonArrayRequest.setShouldCache(true);
+
+        VolleyManager.getInstance().addToRequestQueue(jsonArrayRequest, "Group request");
+
+
+    }
+
+    private void fetchSipPurchase() {
+
+        String url = "http://choureywealthcreation.com/admin/sdevloop/swealth/app/apprsip.php";
+
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+
+                        Log.d(TAG, "onResponse: " + response);
+
+                        recentSipPurchaseArrayList = new JsonParser().parseRecentTransactionList(response);
+
+                        recentSipPurchaseAdapter = new RecentTransactionAdapter(recentSipPurchaseArrayList, getContext());
+
+                        recentSipPurchaseRecyclerView.setAdapter(recentSipPurchaseAdapter);
+
+
+                        refreshUI();
+
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                        Log.d(TAG, "onErrorResponse: " + error);
+
+                    }
+                });
+
+
+        jsonArrayRequest.setShouldCache(true);
+
+        VolleyManager.getInstance().addToRequestQueue(jsonArrayRequest, "Group request");
+
+
+    }
+
+
+    private void fetchRecentRedemption() {
+
+        String url = "http://choureywealthcreation.com/admin/sdevloop/swealth/app/apprredemption.php";
+
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+
+                        Log.d(TAG, "onResponse: " + response);
+
+
+                        recentRedemptionArrayList = new JsonParser().parseRecentTransactionList(response);
+
+                        recentRedemptionAdapter = new RecentTransactionAdapter(recentRedemptionArrayList, getContext());
+
+                        recentRedemptionRecyclerView.setAdapter(recentRedemptionAdapter);
+
+                        refreshUI();
+
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                        Log.d(TAG, "onErrorResponse: " + error);
+
+                    }
+                });
+
+
+        jsonArrayRequest.setShouldCache(true);
+
+        VolleyManager.getInstance().addToRequestQueue(jsonArrayRequest, "Group request");
+
+
+    }
+
+    private void fetchRecentPurchase() {
+
+        String url = "http://choureywealthcreation.com/admin/sdevloop/swealth/app/apprpurchase.php";
+
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+
+                        Log.d(TAG, "onResponse: " + response);
+
+                        recentPurchaseArrayList = new JsonParser().parseRecentTransactionList(response);
+
+                        recentPurchaseAdapter = new RecentTransactionAdapter(recentPurchaseArrayList, getContext());
+
+                        recentPurchaseRecyclerView.setAdapter(recentPurchaseAdapter);
+
+                        refreshUI();
+
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                        Log.d(TAG, "onErrorResponse: " + error);
+
+                    }
+                });
+
+
+        jsonArrayRequest.setShouldCache(true);
+
+        VolleyManager.getInstance().addToRequestQueue(jsonArrayRequest, "Group request");
+
+
+    }
+
+    private void refreshUI() {
+
+    }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -111,6 +290,15 @@ public class PortfolioRecentFragment extends Fragment {
 
 
         recentSipPurchaseRecyclerView.setAdapter(recentSipPurchaseAdapter);
+
+
+        recentSuspendRecyclerView = view.findViewById(R.id.portfolioFragment_recentSuspend_recyclerView);
+        RecyclerView.LayoutManager mLayoutManager4 = new LinearLayoutManager(getContext());
+        recentSuspendRecyclerView.setLayoutManager(mLayoutManager4);
+        recentSuspendRecyclerView.setItemAnimator(new DefaultItemAnimator());
+
+
+        recentSuspendRecyclerView.setAdapter(recentSuspendAdapter);
 
 
         return view;

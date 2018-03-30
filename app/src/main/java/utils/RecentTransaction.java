@@ -6,8 +6,9 @@ package utils;
 
 public class RecentTransaction {
 
-    String name, heading, amount, date;
+    String name, scheme, amount, date;
     int transactionType;
+//0= recent purchase , 1 recent sip purchase, 2recent redemption, 3 recent suspend
 
     public RecentTransaction() {
     }
@@ -20,12 +21,12 @@ public class RecentTransaction {
         this.name = name;
     }
 
-    public String getHeading() {
-        return heading;
+    public String getScheme() {
+        return scheme;
     }
 
-    public void setHeading(String heading) {
-        this.heading = heading;
+    public void setScheme(String scheme) {
+        this.scheme = scheme;
     }
 
     public String getAmount() {

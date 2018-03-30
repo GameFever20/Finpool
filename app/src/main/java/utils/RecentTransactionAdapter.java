@@ -66,7 +66,7 @@ public class RecentTransactionAdapter extends RecyclerView.Adapter<RecyclerView.
 
         RecentTransaction recentTransaction = recentTransactionArrayList.get(position);
 
-        viewHolder.titleTextView.setText(recentTransaction.getHeading());
+        viewHolder.titleTextView.setText(recentTransaction.getScheme());
         viewHolder.nameTextView.setText(recentTransaction.getName());
         viewHolder.amountTextView.setText(recentTransaction.getAmount());
         viewHolder.dateTextView.setText(recentTransaction.getDate());

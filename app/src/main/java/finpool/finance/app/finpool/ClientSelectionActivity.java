@@ -62,6 +62,8 @@ public class ClientSelectionActivity extends AppCompatActivity {
 
     String selectedGroup = "", selectedClient = "";
 
+    //Client selectedGroup,selectedClient;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
