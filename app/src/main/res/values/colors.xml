@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#029c80</color>
     <color name="colorPrimaryDark">#047863</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">#029c80</color>
 
 
-    <color name="colorWhitish">#edf1f4</color>
+    <color name="colorWhitish">#f3e6eaea</color>
 
     <color name="colorBlack">#0b0b0b</color>
 
-     <color name="black_overlay">#66000000</color>
+    <color name="black_overlay">#66000000</color>
     <color name="colorWhite">#ffffff</color>
 
 
@@ -17,7 +17,6 @@
     <color name="highlightColor">#ae0029</color>
     <color name="textColor">#454545</color>
     <color name="lightTextColor">#7c7c7c</color>
-
 
 
 </resources>
