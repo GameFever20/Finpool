@@ -4,63 +4,89 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorWhitish"
     android:orientation="vertical"
     tools:context="finpool.finance.app.finpool.BankAccountActivity">
 
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="This account will be used for all investment and withdrawal"
-        />
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:orientation="vertical">
 
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <EditText
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Account holder Name" />
+            android:layout_gravity="start"
+            android:layout_margin="4dp"
+            android:fontFamily="serif"
+            android:text="This account will be used for all investment and withdrawal"
+            android:textAlignment="viewStart"
+            android:textColor="@color/colorBlack"
+            android:textSize="16sp"
+            android:textStyle="normal" />
 
-    </android.support.design.widget.TextInputLayout>
-
-
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <EditText
+        <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Account Number" />
+            android:layout_margin="4dp">
 
-    </android.support.design.widget.TextInputLayout>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Account holder Name"
+                android:textColor="@color/colorBlack"
+                android:textColorHint="@color/textColor" />
 
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        </android.support.design.widget.TextInputLayout>
 
-        <EditText
+
+        <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Confirm Account Number" />
+            android:layout_margin="4dp">
 
-    </android.support.design.widget.TextInputLayout>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Account Number"
+                android:textColor="@color/colorBlack"
+                android:textColorHint="@color/textColor" />
 
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/input_layout_password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        </android.support.design.widget.TextInputLayout>
 
-        <EditText
-            android:id="@+id/investOnline_pan_editText"
+        <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="IFSC Code" />
+            android:layout_margin="4dp">
 
-    </android.support.design.widget.TextInputLayout>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Confirm Account Number"
+                android:textColor="@color/colorBlack"
+                android:textColorHint="@color/textColor" />
 
+        </android.support.design.widget.TextInputLayout>
 
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/input_layout_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp">
+
+            <EditText
+                android:id="@+id/investOnline_pan_editText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="IFSC Code"
+                android:textColor="@color/colorBlack"
+                android:textColorHint="@color/textColor" />
+
+        </android.support.design.widget.TextInputLayout>
+    </LinearLayout>
 
 </LinearLayout>
