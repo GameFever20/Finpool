@@ -12,49 +12,93 @@
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp"
+        android:layout_marginBottom="0dp"
         app:cardBackgroundColor="@color/colorPrimary"
         app:cardCornerRadius="0dp"
         app:cardElevation="4dp">
 
-
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="start"
-                android:layout_marginBottom="2dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginTop="8dp"
-                android:text="ABHISHEK"
-                android:textAlignment="viewStart"
-                android:textAllCaps="true"
-                android:textColor="@color/colorWhite"
-                android:textSize="18sp"
-                android:textStyle="bold" />
 
-            <TextView
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="start"
-                android:layout_marginBottom="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginTop="0dp"
-                android:text="Investor Name"
-                android:textAlignment="viewStart"
-                android:textColor="@color/colorWhitish"
-                android:textSize="14sp"
-                android:textStyle="normal" />
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/reversaReport_Name_textView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_marginBottom="2dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginTop="8dp"
+                    android:text="ABHISHEK"
+                    android:textAlignment="viewStart"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginTop="0dp"
+                    android:text="Investor Name"
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/colorWhitish"
+                    android:textSize="14sp"
+                    android:textStyle="normal" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/reversaReport_amount_textView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginBottom="2dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginTop="8dp"
+                    android:text="1000"
+                    android:textAlignment="viewEnd"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginTop="0dp"
+                    android:text="Last 50 Reversal"
+                    android:textAlignment="viewEnd"
+                    android:textColor="@color/colorWhitish"
+                    android:textSize="14sp"
+                    android:textStyle="normal" />
+            </LinearLayout>
+
+
         </LinearLayout>
-
-
     </android.support.v7.widget.CardView>
 
     <LinearLayout
@@ -69,7 +113,7 @@
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
             android:layout_marginTop="8dp"
-            android:visibility="visible"
+            android:visibility="gone"
             app:cardBackgroundColor="@color/colorPrimary"
             app:cardCornerRadius="2dp"
             app:cardElevation="4dp">
@@ -107,6 +151,7 @@
                             android:textSize="14sp" />
 
                         <TextView
+                            android:id="@+id/reversalReport_amount"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="1000"
@@ -130,7 +175,9 @@
         <android.support.v7.widget.RecyclerView
             android:id="@+id/reversalReport_recyclerView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:nestedScrollingEnabled="false"
+            android:overScrollMode="ifContentScrolls">
 
         </android.support.v7.widget.RecyclerView>
 

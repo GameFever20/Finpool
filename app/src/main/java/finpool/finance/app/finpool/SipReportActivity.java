@@ -74,7 +74,6 @@ public class SipReportActivity extends AppCompatActivity {
         recyclerView.setAdapter(sipTransactionAdapter);
 
 
-
     }
 
     private void fetchSipReportTransaction(String clientId, String groupId) {
@@ -122,9 +121,10 @@ public class SipReportActivity extends AppCompatActivity {
 
         if (sipTransactionArrayList.size() > 0) {
             SipTransaction sipTransaction = sipTransactionArrayList.get(sipTransactionArrayList.size() - 1);
+            sipTransactionArrayList.remove(sipTransactionArrayList.size() - 1);
 
             investorNameTextView.setText(client);
-            currentInvestmentTextView.setText(sipTransaction.getScheme());
+            currentInvestmentTextView.setText(sipTransaction.getCurrentInvestment());
             sipAmountTextView.setText(sipTransaction.getSipAmount());
             sipCountTextView.setText(sipTransaction.getFolio_no());
             currentValueTextView.setText(sipTransaction.getCurrentValue());

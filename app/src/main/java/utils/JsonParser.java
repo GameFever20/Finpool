@@ -321,9 +321,6 @@ public class JsonParser {
             for (int i = 0; i < jsonArray.length(); i++) {
 
 
-
-
-
                 recentTransaction = new RecentTransaction();
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
 
@@ -344,6 +341,30 @@ public class JsonParser {
 
     }
 
+    public KYCStatus parseKycDetail(JSONObject jsonObject) {
+
+        KYCStatus kycStatus = new KYCStatus();
+
+        try {
+
+
+            JSONObject jsonObject2 = jsonObject.getJSONObject("d");
+
+
+            kycStatus.setName(jsonObject2.getString("Name"));
+            kycStatus.setStatus(jsonObject2.getString("Status"));
+            kycStatus.setKycDate(jsonObject2.getString("KYCDate"));
+            kycStatus.setCurrentDate(jsonObject2.getString("CurrentDate"));
+            kycStatus.setPanNo(jsonObject2.getString("PanNo"));
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return kycStatus;
+
+    }
 
 
 }

@@ -432,7 +432,9 @@
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/mfReport_detail_recyclerView"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="false"
+                    android:overScrollMode="ifContentScrolls">
 
                 </android.support.v7.widget.RecyclerView>
 

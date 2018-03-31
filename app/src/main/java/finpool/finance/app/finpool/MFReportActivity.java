@@ -11,6 +11,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -25,6 +26,7 @@ import utils.ClientAdapter;
 import utils.JsonParser;
 import utils.MFTransaction;
 import utils.MFTransactionAdapter;
+import utils.SipTransaction;
 import utils.VolleyManager;
 
 import static android.content.ContentValues.TAG;
@@ -36,6 +38,8 @@ public class MFReportActivity extends AppCompatActivity {
     ArrayList<MFTransaction> mfTransactionArrayList = new ArrayList<>();
     private String client;
 
+    TextView investorNameTextView, currentValueTextView, currentInvestedTextView, currentValueStatusTextView, gainTextView, sensexTextView, divInvTextView, divPayTextView, cagrTextView, absReturnTextView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +50,20 @@ public class MFReportActivity extends AppCompatActivity {
 
         client = getIntent().getStringExtra("client");
         String group = getIntent().getStringExtra("id");
-        fetchMFTransaction(client,group);
+        fetchMFTransaction(client, group);
+
+
+        investorNameTextView = findViewById(R.id.mfReport_investorName_textView);
+        currentValueTextView = findViewById(R.id.mfReport_currentValue_textView);
+        currentInvestedTextView = findViewById(R.id.mfReport_currentInvested_textView);
+        currentValueStatusTextView = findViewById(R.id.mfReport_currentValueStatus_textView);
+        gainTextView = findViewById(R.id.mfReport_gain_textView);
+        sensexTextView = findViewById(R.id.mfReport_sensex_textView);
+        divInvTextView = findViewById(R.id.mfReport_divInv_textView);
+        divPayTextView = findViewById(R.id.mfReport_divPay_textView);
+        cagrTextView = findViewById(R.id.mfReport_cagr_textView);
+        absReturnTextView = findViewById(R.id.mfReport_absReturn_textView);
+
 
         recyclerView = findViewById(R.id.mfReport_recyclerView);
 
@@ -63,7 +80,7 @@ public class MFReportActivity extends AppCompatActivity {
 
     public void fetchMFTransaction(final String clientId, String groupId) {
 
-        String url = "http://choureywealthcreation.com/admin/sdevloop/swealth/app/mobileval.php?id="+groupId+"&client=" + clientId;
+        String url = "http://choureywealthcreation.com/admin/sdevloop/swealth/app/mobileval.php?id=" + groupId + "&client=" + clientId;
 
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONArray>() {
@@ -84,16 +101,18 @@ public class MFReportActivity extends AppCompatActivity {
                             @Override
                             public void onItemClick(View view, int position) {
 
-                                Intent intent = new Intent(MFReportActivity.this,MFReportDetailActivity.class);
+                                Intent intent = new Intent(MFReportActivity.this, MFReportDetailActivity.class);
 
                                 intent.putExtra("client", client);
-                                intent.putExtra("transaction",mfTransactionArrayList.get(position));
+                                intent.putExtra("transaction", mfTransactionArrayList.get(position));
 
 
                                 startActivity(intent);
 
                             }
                         });
+
+                        refreshUI();
 
 
                     }
@@ -111,6 +130,29 @@ public class MFReportActivity extends AppCompatActivity {
         jsonArrayRequest.setShouldCache(true);
 
         VolleyManager.getInstance().addToRequestQueue(jsonArrayRequest, "Group request");
+
+
+    }
+
+
+    private void refreshUI() {
+
+        if (mfTransactionArrayList.size() > 0) {
+            MFTransaction mfTransaction = mfTransactionArrayList.get(mfTransactionArrayList.size() - 1);
+            mfTransactionArrayList.remove(mfTransactionArrayList.size() - 1);
+
+            investorNameTextView.setText(client);
+            currentValueTextView.setText(mfTransaction.getCurrentValue());
+            currentValueStatusTextView.setText(mfTransaction.getCurrentValue());
+            currentInvestedTextView.setText(mfTransaction.getAmount());
+            gainTextView.setText(mfTransaction.getGain());
+            divInvTextView.setText(mfTransaction.getDivInvest());
+            divPayTextView.setText(mfTransaction.getDivPay());
+            cagrTextView.setText(mfTransaction.getCagr());
+            absReturnTextView.setText(mfTransaction.getAbsReturn());
+
+
+        }
 
 
     }

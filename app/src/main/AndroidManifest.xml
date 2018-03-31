@@ -16,23 +16,17 @@
             android:name=".LoginActivity"
             android:label="Finpool"
             android:theme="@style/AppTheme.NoActionBar">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity android:name=".SplashScreenActivity" />
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_main"
-            android:theme="@style/AppTheme.NoActionBar" >
-
-
-        </activity>
-
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".PortfolioActivity"
             android:label="@string/title_activity_portfolio"
@@ -61,7 +55,9 @@
         <activity
             android:name=".MFReportDetailActivity"
             android:label="@string/title_activity_mfreport_detail"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".InvestOnlineActivity" />
+        <activity android:name=".BankAccountActivity"></activity>
     </application>
 
 </manifest>
