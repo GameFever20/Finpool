@@ -1,10 +1,12 @@
 package utils;
 
+import java.io.Serializable;
+
 /**
  * Created by bunny on 27/03/18.
  */
 
-public class Client {
+public class Client implements Serializable{
     String name, id,email;
 
     public String getName() {

@@ -134,6 +134,8 @@ public class JsonParser {
             for (int i = 0; i < jsonArray.length(); i++) {
 
 
+
+
                 mfTransactionDetail = new MFTransactionDetail();
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
 
@@ -356,6 +358,14 @@ public class JsonParser {
             kycStatus.setKycDate(jsonObject2.getString("KYCDate"));
             kycStatus.setCurrentDate(jsonObject2.getString("CurrentDate"));
             kycStatus.setPanNo(jsonObject2.getString("PanNo"));
+            kycStatus.setClientType(jsonObject2.getString("app_type"));
+
+            if (kycStatus.getClientType()==null){
+              kycStatus.setClientType("Corporate");
+            }else{
+                kycStatus.setClientType("Individual");
+            }
+
 
 
         } catch (Exception e) {
@@ -363,6 +373,46 @@ public class JsonParser {
         }
 
         return kycStatus;
+
+    }
+
+
+    public ArrayList<TransactionReport> parseTransactionReportList(JSONArray jsonArray) {
+        ArrayList<TransactionReport> transactionReportArrayList = new ArrayList<>();
+
+        try {
+
+            TransactionReport transactionReport;
+
+            for (int i = 0; i < jsonArray.length(); i++) {
+
+
+
+
+                transactionReport = new TransactionReport();
+                JSONObject jsonObject = jsonArray.getJSONObject(i);
+
+                transactionReport.setInvName(jsonObject.getString("INV_NAME"));
+                transactionReport.setScheme(jsonObject.getString("SCHEME"));
+                transactionReport.setFolio_no(jsonObject.getString("FOLIO_NO"));
+                transactionReport.setSubType(jsonObject.getString("sub_type"));
+                transactionReport.setSchemeType(jsonObject.getString("SCHEME_TYPTWO"));
+                transactionReport.setTradeDate(jsonObject.getString("TRADDATE"));
+                transactionReport.setAmount(jsonObject.getString("AMOUNT"));
+                transactionReport.setPurchasePrice(jsonObject.getString("PURPRICE"));
+                transactionReport.setUnits(jsonObject.getString("UNITS"));
+                transactionReport.setRemarks(jsonObject.getString("Remarks"));
+
+
+                transactionReportArrayList.add(transactionReport);
+
+
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return transactionReportArrayList;
 
     }
 

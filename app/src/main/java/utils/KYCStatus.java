@@ -6,7 +6,7 @@ package utils;
 
 public class KYCStatus {
 
-    String name, status, kycDate, currentDate, panNo;
+    String name, status, kycDate, currentDate, panNo, clientType;
 
     public String getName() {
         return name;
@@ -46,5 +46,13 @@ public class KYCStatus {
 
     public void setPanNo(String panNo) {
         this.panNo = panNo;
+    }
+
+    public String getClientType() {
+        return clientType;
+    }
+
+    public void setClientType(String clientType) {
+        this.clientType = clientType;
     }
 }

@@ -1,5 +1,6 @@
 package finpool.finance.app.finpool;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -62,7 +63,11 @@ public class ClientSelectionActivity extends AppCompatActivity {
 
     String selectedGroup = "", selectedClient = "";
 
-    //Client selectedGroup,selectedClient;
+    Client groupSlected, clientSelected;
+
+    boolean isSelectingGroup = true;
+
+    ProgressDialog progress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,30 +90,35 @@ public class ClientSelectionActivity extends AppCompatActivity {
         groupAdapter = new ClientAdapter(groupArrayList, this);
 
 
-        spinner = (Spinner) findViewById(R.id.clientActivity_spinner);
-        ArrayAdapter<String> adapter;
-
-       /* groupArrayList.add("All");
-
-        groupArrayList.add("Item 1");
-        groupArrayList.add("Item 2");
-        groupArrayList.add("Item 3");
-        groupArrayList.add("Item 4");
-        groupArrayList.add("Item 5");
-        adapter = new ArrayAdapter<String>(getApplicationContext(),
-                android.R.layout.simple_spinner_item, groupArrayList);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
-*/
-
         fetchGroupList();
 
         initializeBottomSheet();
         headingBottomSheetTextView = findViewById(R.id.clientActivity_bottomsheet_heading);
 
 
+        progress = new ProgressDialog(this);
+
     }
 
+    @Override
+    public void onBackPressed() {
+
+
+        if (isSelectingGroup){
+            super.onBackPressed();
+        }else {
+            isSelectingGroup=true;
+            showGroupList();
+        }
+
+    }
+
+    private void showGroupList() {
+
+        recyclerView.setAdapter(groupAdapter);
+
+
+    }
 
     private void initializeBottomSheet() {
 
@@ -156,7 +166,7 @@ public class ClientSelectionActivity extends AppCompatActivity {
                         client.setName("All");
                         client.setId("");
 
-                        groupArrayList.add(0,client);
+                        groupArrayList.add(0, client);
 
 
                         groupAdapter = new ClientAdapter(groupArrayList, ClientSelectionActivity.this);
@@ -166,6 +176,10 @@ public class ClientSelectionActivity extends AppCompatActivity {
                             public void onItemClick(int position, View view) {
                                 fetchGroupDetails(groupArrayList.get(position).getId());
                                 selectedGroup = groupArrayList.get(position).getId();
+                                groupSlected = groupArrayList.get(position);
+
+                                isSelectingGroup = false;
+                                showDialog();
                             }
                         });
 
@@ -204,15 +218,16 @@ public class ClientSelectionActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONArray response) {
 
+                        hideDialog();
                         Log.d(TAG, "onResponse: " + response);
 
                         clientArrayList = new JsonParser().parseGroupDetails(response);
 
-                        Client client = new Client();
+                        final Client client = new Client();
                         client.setName("All");
                         client.setId("");
 
-                        clientArrayList.add(0,client);
+                        clientArrayList.add(0, client);
 
                         clientAdapter = new ClientAdapter(clientArrayList, ClientSelectionActivity.this);
 
@@ -228,11 +243,13 @@ public class ClientSelectionActivity extends AppCompatActivity {
                                 //headingBottomSheetTextView.setText("Select Report to show for " + clientArrayList.get(position));
 
 
-
-                                if (position!=0){
-                                    selectedGroup="";
+                                if (position != 0) {
+                                    selectedGroup = "";
+                                    groupSlected = new Client();
+                                    groupSlected.setId("");
                                 }
                                 selectedClient = clientArrayList.get(position).getId();
+                                clientSelected = clientArrayList.get(position);
 
                                 showDialogChooser();
 
@@ -261,7 +278,7 @@ public class ClientSelectionActivity extends AppCompatActivity {
 
     private void showDialogChooser() {
 
-        AlertView alert = new AlertView("Select Report to show", "Client - "+selectedClient+" => "+selectedGroup, AlertStyle.IOS);
+        AlertView alert = new AlertView("Select Report to show", "Client - " + selectedClient + " => " + selectedGroup, AlertStyle.IOS);
 
         alert.addAction(new AlertAction("MF Report", AlertActionStyle.DEFAULT, new AlertActionListener() {
             @Override
@@ -313,7 +330,6 @@ public class ClientSelectionActivity extends AppCompatActivity {
             public void onActionClick(AlertAction alertAction) {
 
 
-
             }
         }));
 
@@ -361,10 +377,35 @@ public class ClientSelectionActivity extends AppCompatActivity {
     public void onReportClick(Intent intent) {
 
         intent.putExtra("id", selectedGroup);
-        intent.putExtra("client",selectedClient );
+        intent.putExtra("client", selectedClient);
+
+        intent.putExtra("groupSelected", groupSlected);
+        intent.putExtra("clientSelected", clientSelected);
+
 
         startActivity(intent);
 
     }
+
+
+    public void showDialog() {
+        try {
+            progress.setMessage("Getting Clients ");
+
+            progress.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void hideDialog() {
+        try {
+            progress.hide();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
 
 }

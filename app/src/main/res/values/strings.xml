@@ -109,4 +109,5 @@
     <string name="title_activity_sip_report">SipReportActivity</string>
     <string name="title_activity_reversal_report">ReversalReportActivity</string>
     <string name="title_activity_mfreport_detail">MFReportDetailActivity</string>
+    <string name="title_activity_transaction_report">TransactionReportActivity</string>
 </resources>

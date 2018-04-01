@@ -113,4 +113,11 @@ public class MainActivity extends AppCompatActivity
         Intent intent = new Intent(this, PortfolioActivity.class);
         startActivity(intent);
     }
+
+    public void onInvestOnlineClick(View view) {
+
+        Intent intent = new Intent(this, InvestOnlineActivity.class);
+        startActivity(intent);
+
+    }
 }

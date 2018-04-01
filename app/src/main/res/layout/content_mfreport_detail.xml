@@ -25,6 +25,8 @@
             android:orientation="horizontal"
             android:weightSum="2">
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -32,6 +34,7 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/mfDetailActivity_investorName_textView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="start"
@@ -62,6 +65,44 @@
             </LinearLayout>
 
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/mfDetailActivity_currentValueStatus_textView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginBottom="2dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginTop="8dp"
+                    android:text="112012"
+                    android:textAlignment="viewEnd"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginTop="0dp"
+                    android:text="Current Value"
+                    android:textAlignment="viewEnd"
+                    android:textColor="@color/colorWhitish"
+                    android:textSize="14sp"
+                    android:textStyle="normal" />
+            </LinearLayout>
+
+
         </LinearLayout>
 
 
@@ -76,346 +117,75 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <LinearLayout
+
+            <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_marginBottom="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="8dp"
+                android:visibility="visible"
+                app:cardBackgroundColor="@color/colorPrimary"
+                app:cardCornerRadius="2dp"
+                app:cardElevation="4dp">
 
-                <android.support.v7.widget.CardView
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
+                    android:layout_marginBottom="2dp"
                     android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_marginTop="8dp"
-                    android:visibility="visible"
-                    app:cardBackgroundColor="@color/colorPrimary"
-                    app:cardCornerRadius="2dp"
-                    app:cardElevation="4dp">
+                    android:layout_marginRight="2dp"
+                    android:layout_marginTop="2dp"
+                    android:orientation="vertical">
 
+                    <TextView
+                        android:id="@+id/mfDetailActivity_schemeName_textView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Aditya Birla SUn Life djfh j"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/mfDetailActivity_currentNav_textView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="2000"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="2dp"
-                        android:layout_marginLeft="8dp"
-                        android:layout_marginRight="2dp"
-                        android:layout_marginTop="2dp"
-                        android:orientation="vertical">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
-                            android:orientation="horizontal">
-
-
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Current"
-                                    android:textAlignment="center"
-                                    android:textColor="@color/colorWhitish"
-                                    android:textSize="12sp" />
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="2000"
-                                    android:textAlignment="center"
-                                    android:textColor="@color/colorWhite"
-                                    android:textSize="14sp"
-                                    android:textStyle="bold" />
-
-
-                            </LinearLayout>
-
-
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Invested"
-                                    android:textAlignment="center"
-                                    android:textColor="@color/colorWhitish"
-                                    android:textSize="12sp" />
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="6"
-                                    android:textAlignment="center"
-                                    android:textColor="@color/colorWhite"
-                                    android:textSize="14sp"
-                                    android:textStyle="bold" />
-
-
-                            </LinearLayout>
-
-
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Gain"
-                                    android:textAlignment="center"
-                                    android:textColor="@color/colorWhitish"
-                                    android:textSize="12sp" />
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="1824450"
-                                    android:textAlignment="center"
-                                    android:textColor="@color/colorWhite"
-                                    android:textSize="14sp"
-                                    android:textStyle="bold" />
-
-
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Sensex"
-                                    android:textAlignment="center"
-                                    android:textColor="@color/colorWhitish"
-                                    android:textSize="12sp" />
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="sensex"
-                                    android:textAlignment="center"
-                                    android:textColor="@color/colorWhite"
-                                    android:textSize="14sp"
-                                    android:textStyle="bold" />
-
-
-                            </LinearLayout>
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="4dp"
-                            android:layout_marginTop="6dp"
-                            android:orientation="horizontal">
-
-
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Div Inv"
-                                    android:textAlignment="center"
-                                    android:textColor="@color/colorWhitish"
-                                    android:textSize="12sp" />
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="0"
-                                    android:textAlignment="center"
-                                    android:textColor="@color/colorWhite"
-                                    android:textSize="14sp"
-                                    android:textStyle="bold" />
-
-
-                            </LinearLayout>
-
-
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Div Pay"
-                                    android:textAlignment="center"
-                                    android:textColor="@color/colorWhitish"
-                                    android:textSize="12sp" />
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="0"
-                                    android:textAlignment="center"
-                                    android:textColor="@color/colorWhite"
-                                    android:textSize="14sp"
-                                    android:textStyle="bold" />
-
-
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="CAGR"
-                                    android:textAlignment="center"
-                                    android:textColor="@color/colorWhitish"
-                                    android:textSize="12sp" />
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="1.62%"
-                                    android:textAlignment="center"
-                                    android:textColor="@color/colorWhite"
-                                    android:textSize="14sp"
-                                    android:textStyle="bold" />
-
-
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Abs.Rtn."
-                                    android:textAlignment="center"
-                                    android:textColor="@color/colorWhitish"
-                                    android:textSize="12sp" />
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="-2.4324"
-                                    android:textAlignment="center"
-                                    android:textColor="@color/colorWhite"
-                                    android:textSize="14sp"
-                                    android:textStyle="bold" />
-
-
-                            </LinearLayout>
-
-
-                        </LinearLayout>
-
-
-                    </LinearLayout>
-
-
-                </android.support.v7.widget.CardView>
-
-                <android.support.v7.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_marginTop="8dp"
-                    android:visibility="visible"
-                    app:cardBackgroundColor="@color/colorPrimary"
-                    app:cardCornerRadius="2dp"
-                    app:cardElevation="4dp">
-
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="2dp"
-                        android:layout_marginLeft="8dp"
-                        android:layout_marginRight="2dp"
-                        android:layout_marginTop="2dp"
-                        android:orientation="vertical">
+                        android:layout_marginTop="4dp"
+                        android:orientation="horizontal">
 
 
                         <LinearLayout
-                            android:layout_width="match_parent"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_margin="2dp"
-                            android:orientation="horizontal"
-                            android:weightSum="2">
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="4dp"
-                                android:layout_marginRight="4dp"
-                                android:layout_weight="1"
-                                android:text="Current Nav : "
-                                android:textAlignment="center"
-                                android:textColor="@color/colorWhite"
-                                android:textSize="14sp"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="2000"
-                                android:textAlignment="center"
-                                android:textColor="@color/colorWhite"
-                                android:textSize="14sp"
-                                android:textStyle="bold" />
-
-
-                        </LinearLayout>
-
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="2dp"
                             android:layout_weight="1"
                             android:orientation="vertical">
 
                             <TextView
-                                android:layout_width="match_parent"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Aditya Birla SUn Life djfh j"
+                                android:text="Count"
                                 android:textAlignment="center"
-                                android:textColor="@color/colorWhite"
-                                android:textSize="14sp" />
+                                android:textColor="@color/colorWhitish"
+                                android:textSize="12sp" />
 
                             <TextView
+                                android:id="@+id/mfDetailActivity_count_textView"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="6"
-                                android:textAlignment="center"
                                 android:textColor="@color/colorWhite"
                                 android:textSize="14sp"
                                 android:textStyle="normal" />
@@ -424,21 +194,231 @@
                         </LinearLayout>
 
 
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Invested"
+                                android:textAlignment="center"
+                                android:textColor="@color/colorWhitish"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:id="@+id/mfDetailActivity_investedValue_textView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="6"
+                                android:textAlignment="center"
+                                android:textColor="@color/colorWhite"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+
+
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Gain"
+                                android:textAlignment="center"
+                                android:textColor="@color/colorWhitish"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:id="@+id/mfDetailActivity_gain_textView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="1824450"
+                                android:textAlignment="center"
+                                android:textColor="@color/colorWhite"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Sensex"
+                                android:textAlignment="center"
+                                android:textColor="@color/colorWhitish"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:id="@+id/mfDetailActivity_sensex_textView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="sensex"
+                                android:textAlignment="center"
+                                android:textColor="@color/colorWhite"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="4dp"
+                        android:layout_marginTop="6dp"
+                        android:orientation="horizontal">
+
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Div Inv"
+                                android:textAlignment="center"
+                                android:textColor="@color/colorWhitish"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:id="@+id/mfDetailActivity_divInv_textView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="0"
+
+                                android:textAlignment="center"
+                                android:textColor="@color/colorWhite"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+
+
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Div Pay"
+                                android:textAlignment="center"
+                                android:textColor="@color/colorWhitish"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:id="@+id/mfDetailActivity_divPay_textView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="0"
+
+                                android:textAlignment="center"
+                                android:textColor="@color/colorWhite"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="CAGR"
+                                android:textAlignment="center"
+                                android:textColor="@color/colorWhitish"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:id="@+id/mfDetailActivity_cagr_textView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="1.62%"
+
+                                android:textAlignment="center"
+                                android:textColor="@color/colorWhite"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Abs.Rtn."
+                                android:textAlignment="center"
+                                android:textColor="@color/colorWhitish"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:id="@+id/mfDetailActivity_absReturn_textView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="-2.4324"
+
+                                android:textAlignment="center"
+                                android:textColor="@color/colorWhite"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+
+
+                        </LinearLayout>
+
+
                     </LinearLayout>
 
 
-                </android.support.v7.widget.CardView>
+                </LinearLayout>
 
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/mfReport_detail_recyclerView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:nestedScrollingEnabled="false"
-                    android:overScrollMode="ifContentScrolls">
 
-                </android.support.v7.widget.RecyclerView>
+            </android.support.v7.widget.CardView>
 
-            </LinearLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/mfReport_detail_recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"
+                android:overScrollMode="ifContentScrolls">
+
+            </android.support.v7.widget.RecyclerView>
+
+
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
 </LinearLayout>

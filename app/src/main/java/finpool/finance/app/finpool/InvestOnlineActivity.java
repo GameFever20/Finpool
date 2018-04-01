@@ -1,11 +1,13 @@
 package finpool.finance.app.finpool;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -37,6 +39,7 @@ public class InvestOnlineActivity extends AppCompatActivity {
 
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,10 +63,6 @@ public class InvestOnlineActivity extends AppCompatActivity {
     private void fetchPanDetail() {
 
         String url = "http://choureywealthcreation.com/admin/sdevloop/swealth/video.php?numer="+panNumber;
-
-
-
-
 
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null,
@@ -112,19 +111,20 @@ public class InvestOnlineActivity extends AppCompatActivity {
 
     private void refreshUI() {
 
-        if (kycStatus.getStatus()==null){
+        if (kycStatus.getStatus()!=null){
 
             if (kycStatus.getStatus().isEmpty()){
                showNotRegisteredDialog();
             }else {
-                showNotRegisteredDialog();
+
+                showRegisteredDialog();
+                //Toast.makeText(this, "Status Successful", Toast.LENGTH_SHORT).show();
             }
 
 
 
         }else{
-
-
+            showNotRegisteredDialog();
         }
 
     }
@@ -139,6 +139,7 @@ public class InvestOnlineActivity extends AppCompatActivity {
         alert.addAction(new AlertAction("Proceed", AlertActionStyle.DEFAULT, new AlertActionListener() {
             @Override
             public void onActionClick(AlertAction alertAction) {
+
 
 
             }
@@ -160,5 +161,42 @@ public class InvestOnlineActivity extends AppCompatActivity {
 
 
     }
+
+
+    private void showRegisteredDialog() {
+
+
+
+
+        AlertView alert = new AlertView("Hello "+kycStatus.getName(), "Your KYC Details \n• "+kycStatus.getPanNo()+"\n• "+kycStatus.getStatus()+"\n• "+kycStatus.getKycDate()+"\n• "+kycStatus.getClientType(), AlertStyle.BOTTOM_SHEET);
+
+        alert.addAction(new AlertAction("Proceed", AlertActionStyle.DEFAULT, new AlertActionListener() {
+            @Override
+            public void onActionClick(AlertAction alertAction) {
+
+                Intent intent = new Intent(InvestOnlineActivity.this, BankAccountActivity.class);
+                startActivity(intent);
+
+            }
+        }));
+
+        alert.addAction(new AlertAction("Cancel", AlertActionStyle.DEFAULT, new AlertActionListener() {
+            @Override
+            public void onActionClick(AlertAction alertAction) {
+
+
+
+
+            }
+        }));
+
+
+
+
+        alert.show(this);
+
+
+    }
+
 
 }

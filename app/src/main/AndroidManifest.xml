@@ -56,8 +56,16 @@
             android:name=".MFReportDetailActivity"
             android:label="@string/title_activity_mfreport_detail"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".InvestOnlineActivity" />
-        <activity android:name=".BankAccountActivity"></activity>
+        <activity
+            android:name=".InvestOnlineActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".BankAccountActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".TransactionReportActivity"
+            android:label="@string/title_activity_transaction_report"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

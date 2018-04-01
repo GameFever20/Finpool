@@ -21,6 +21,7 @@ import org.json.JSONArray;
 
 import java.util.ArrayList;
 
+import utils.Client;
 import utils.JsonParser;
 import utils.ReversalTransaction;
 import utils.ReversalTransactionAdapter;
@@ -40,6 +41,10 @@ public class ReversalReportActivity extends AppCompatActivity {
 
     String client;
 
+    Client groupSlected,clientSelected;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,7 +54,12 @@ public class ReversalReportActivity extends AppCompatActivity {
 
         client = getIntent().getStringExtra("client");
         String group = getIntent().getStringExtra("id");
-        fetchReversalReportTransaction(client, group);
+
+
+        groupSlected = (Client)getIntent().getSerializableExtra("groupSelected");
+        clientSelected = (Client)getIntent().getSerializableExtra("clientSelected");
+
+        fetchReversalReportTransaction(clientSelected.getId(), groupSlected.getId());
 
         investorNameTextView = findViewById(R.id.reversaReport_Name_textView);
         amountTextView = findViewById(R.id.reversaReport_amount_textView);
@@ -116,7 +126,7 @@ public class ReversalReportActivity extends AppCompatActivity {
             ReversalTransaction reversalTransaction = reversalTransactionArrayList.get(reversalTransactionArrayList.size() - 1);
             reversalTransactionArrayList.remove(reversalTransactionArrayList.size() - 1);
 
-            investorNameTextView.setText(client);
+            investorNameTextView.setText(clientSelected.getName());
             amountTextView.setText(reversalTransaction.getAmount());
 
 

@@ -21,6 +21,7 @@ import org.json.JSONArray;
 
 import java.util.ArrayList;
 
+import utils.Client;
 import utils.JsonParser;
 import utils.MFTransaction;
 import utils.MFTransactionAdapter;
@@ -40,6 +41,9 @@ public class SipReportActivity extends AppCompatActivity {
 
     String client;
 
+    Client groupSlected,clientSelected;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,7 +54,11 @@ public class SipReportActivity extends AppCompatActivity {
 
         client = getIntent().getStringExtra("client");
         String group = getIntent().getStringExtra("id");
-        fetchSipReportTransaction(client, group);
+
+        groupSlected = (Client)getIntent().getSerializableExtra("groupSelected");
+        clientSelected = (Client)getIntent().getSerializableExtra("clientSelected");
+
+        fetchSipReportTransaction(clientSelected.getId(), groupSlected.getId());
 
 
         investorNameTextView = findViewById(R.id.sipReport_investorName_textView);
@@ -123,7 +131,7 @@ public class SipReportActivity extends AppCompatActivity {
             SipTransaction sipTransaction = sipTransactionArrayList.get(sipTransactionArrayList.size() - 1);
             sipTransactionArrayList.remove(sipTransactionArrayList.size() - 1);
 
-            investorNameTextView.setText(client);
+            investorNameTextView.setText(clientSelected.getName());
             currentInvestmentTextView.setText(sipTransaction.getCurrentInvestment());
             sipAmountTextView.setText(sipTransaction.getSipAmount());
             sipCountTextView.setText(sipTransaction.getFolio_no());

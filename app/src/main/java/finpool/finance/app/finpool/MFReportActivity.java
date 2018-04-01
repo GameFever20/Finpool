@@ -22,6 +22,7 @@ import org.json.JSONArray;
 
 import java.util.ArrayList;
 
+import utils.Client;
 import utils.ClientAdapter;
 import utils.JsonParser;
 import utils.MFTransaction;
@@ -40,6 +41,8 @@ public class MFReportActivity extends AppCompatActivity {
 
     TextView investorNameTextView, currentValueTextView, currentInvestedTextView, currentValueStatusTextView, gainTextView, sensexTextView, divInvTextView, divPayTextView, cagrTextView, absReturnTextView;
 
+    Client groupSlected,clientSelected;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +53,11 @@ public class MFReportActivity extends AppCompatActivity {
 
         client = getIntent().getStringExtra("client");
         String group = getIntent().getStringExtra("id");
-        fetchMFTransaction(client, group);
+
+        groupSlected = (Client)getIntent().getSerializableExtra("groupSelected");
+        clientSelected = (Client)getIntent().getSerializableExtra("clientSelected");
+
+        fetchMFTransaction(clientSelected.getId(), groupSlected.getId());
 
 
         investorNameTextView = findViewById(R.id.mfReport_investorName_textView);
@@ -141,7 +148,7 @@ public class MFReportActivity extends AppCompatActivity {
             MFTransaction mfTransaction = mfTransactionArrayList.get(mfTransactionArrayList.size() - 1);
             mfTransactionArrayList.remove(mfTransactionArrayList.size() - 1);
 
-            investorNameTextView.setText(client);
+            investorNameTextView.setText(clientSelected.getName());
             currentValueTextView.setText(mfTransaction.getCurrentValue());
             currentValueStatusTextView.setText(mfTransaction.getCurrentValue());
             currentInvestedTextView.setText(mfTransaction.getAmount());
