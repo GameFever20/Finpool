@@ -15,8 +15,16 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.data.DataSet;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.PieData;
+import com.github.mikephil.charting.data.PieDataSet;
+import com.github.mikephil.charting.data.PieEntry;
 
 import org.json.JSONArray;
+
+import java.util.ArrayList;
 
 import utils.JsonParser;
 import utils.MFTransactionAdapter;
@@ -44,6 +52,7 @@ public class PortfolioOverviewFragment extends Fragment {
     TextView aumDateTextView, activeClientTextView, sipTextView, newSipTextView, totalBalanceTextView, totalInvestedTextView,
             equityBalanceTextView, equityInvestedTextView, balanceBalanceTextView, balanceInvestedTextView, debtBalanceTextView,
             debtInvestedTextView, cashBalanceTextView, cashInvestedTextView, otherBalanceTextView, otherInvestedTextView;
+    private PieChart pieChart;
 
 
     public PortfolioOverviewFragment() {
@@ -129,10 +138,39 @@ public class PortfolioOverviewFragment extends Fragment {
         otherBalanceTextView = view.findViewById(R.id.portfolioFragment_otherBalance_textView);
         otherInvestedTextView = view.findViewById(R.id.portfolioFragment_otherInvested_textView);
 
+        pieChart = view.findViewById(R.id.chart);
+        initializeChart();
 
         refreshUI();
 
         return view;
+    }
+
+    private void initializeChart() {
+
+        ArrayList<PieEntry> entries = new ArrayList<>();
+
+        entries.add(new PieEntry(4f, 0));
+        entries.add(new PieEntry(8f, 1));
+        entries.add(new PieEntry(6f, 2));
+        entries.add(new PieEntry(12f, 3));
+        entries.add(new PieEntry(18f, 4));
+        entries.add(new PieEntry(9f, 5));
+
+        PieDataSet pieDataSet = new PieDataSet(entries,"Reports analysis");
+
+        ArrayList<String> label = new ArrayList<>();
+        label.add("Rp 1");
+        label.add("Rp 2");
+        label.add("Rp 3");
+        label.add("Rp 4");
+        label.add("Rp 5");
+        label.add("Rp 6");
+
+
+        PieData data = new PieData( pieDataSet);
+
+        pieChart.setData(data);
     }
 
     private void refreshUI() {

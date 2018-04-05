@@ -15,10 +15,14 @@ import android.view.View;
 import java.util.ArrayList;
 import java.util.List;
 
+import utils.Client;
+
 public class TransactionReportActivity extends AppCompatActivity {
 
     private TabLayout tabLayout;
     private ViewPager viewPager;
+    private Client groupSlected;
+    private Client clientSelected;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +30,10 @@ public class TransactionReportActivity extends AppCompatActivity {
         setContentView(R.layout.activity_transaction_report);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        groupSlected = (Client)getIntent().getSerializableExtra("groupSelected");
+        clientSelected = (Client)getIntent().getSerializableExtra("clientSelected");
+
 
         viewPager = (ViewPager) findViewById(R.id.portfolio_viewpager);
         setupViewPager(viewPager);
@@ -42,9 +50,10 @@ public class TransactionReportActivity extends AppCompatActivity {
 
         TransactionReportActivity.ViewPagerAdapter adapter = new TransactionReportActivity.ViewPagerAdapter(getSupportFragmentManager());
 
-        adapter.addFragment(PortfolioOverviewFragment.newInstance("",""), "Purchase");
+        adapter.addFragment(TransactionReportFragment.newInstance(1,clientSelected.getId(),groupSlected.getId()), "Purchase");
 
-        adapter.addFragment(PortfolioRecentFragment.newInstance("",""), "Redumption");
+        adapter.addFragment(TransactionReportFragment.newInstance(2,clientSelected.getId(),groupSlected.getId()), "Redumption");
+
 
         viewPager.setAdapter(adapter);
     }

@@ -5,13 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
-    tools:context="finpool.finance.app.finpool.SplashScreenActivity">
+    tools:context="finpool.finance.app.finpool.PatternLockActivity">
 
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Welcome to Finpool\n Loading your data\n wait for 3 seconds" />
+    <com.andrognito.patternlockview.PatternLockView
+        android:id="@+id/pattern_lock_view"
+        android:layout_width="280dp"
+        android:layout_height="280dp"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="64dp" />
+
+
 
 
 </android.support.design.widget.CoordinatorLayout>

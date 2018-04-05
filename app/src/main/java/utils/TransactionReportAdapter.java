@@ -63,7 +63,7 @@ public class TransactionReportAdapter extends RecyclerView.Adapter<RecyclerView.
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.mf_transaction_adapter_row_layout, parent, false);
+                .inflate(R.layout.transaction_report_adapter_row_layout, parent, false);
 
 
         return new ClientViewHolder(itemView);

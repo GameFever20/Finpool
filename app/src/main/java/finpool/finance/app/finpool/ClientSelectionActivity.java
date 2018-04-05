@@ -354,7 +354,7 @@ public class ClientSelectionActivity extends AppCompatActivity {
     }
 
     public void onTransactionReportClick(View view) {
-        Intent intent = new Intent(this, MFReportActivity.class);
+        Intent intent = new Intent(this, TransactionReportActivity.class);
 
         onReportClick(intent);
 

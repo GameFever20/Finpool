@@ -40,21 +40,26 @@ import static android.content.ContentValues.TAG;
 public class TransactionReportFragment extends Fragment {
 
     private int transType;
+    // 1= purchase 2= redemption
 
     String url;
 
     RecyclerView recyclerView;
     ArrayList<TransactionReport> transactionReportArrayList = new ArrayList<>();
     TransactionReportAdapter transactionReportAdapter;
+    String groupId, clientId;
 
     public TransactionReportFragment() {
     }
 
 
-    public static TransactionReportFragment newInstance(int transType) {
+    public static TransactionReportFragment newInstance(int transType, String client, String id) {
         TransactionReportFragment fragment = new TransactionReportFragment();
         Bundle args = new Bundle();
         args.putInt("transType", transType);
+        args.putString("client", client);
+        args.putString("id", id);
+
         fragment.setArguments(args);
         return fragment;
     }
@@ -64,16 +69,22 @@ public class TransactionReportFragment extends Fragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             transType = getArguments().getInt("transType");
+            clientId = getArguments().getString("client");
+            groupId = getArguments().getString("id");
+
         }
 
         if (transType == 1) {
 
-            url= "http://choureywealthcreation.com/admin/sdevloop/swealth/app/mobiletranred.php?client=&id=";
+            url = "http://choureywealthcreation.com/admin/sdevloop/swealth/app/mobiletranpur.php?client=" + clientId + "&id=" + groupId;
+
         } else {
+
+            url = "http://choureywealthcreation.com/admin/sdevloop/swealth/app/mobiletranred.php?client=" + clientId + "&id=" + groupId;
 
         }
 
-        transactionReportAdapter=new TransactionReportAdapter(transactionReportArrayList,getContext());
+        transactionReportAdapter = new TransactionReportAdapter(transactionReportArrayList, getContext());
 
         fetchTransactionList();
 
@@ -120,7 +131,6 @@ public class TransactionReportFragment extends Fragment {
     }
 
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -131,7 +141,6 @@ public class TransactionReportFragment extends Fragment {
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-
 
 
         recyclerView.setAdapter(transactionReportAdapter);

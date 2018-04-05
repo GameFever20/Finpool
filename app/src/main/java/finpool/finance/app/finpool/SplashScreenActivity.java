@@ -5,6 +5,8 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import utils.SettingManager;
+
 public class SplashScreenActivity extends AppCompatActivity {
 
     @Override
@@ -31,9 +33,18 @@ public class SplashScreenActivity extends AppCompatActivity {
             public void run() {
                 // This method will be executed once the timer is over
                 // Start your app main activity
-                Intent i = new Intent(SplashScreenActivity.this, LoginActivity.class);
-                startActivity(i);
+                Intent i ;
 
+
+                if (SettingManager.getLoggedIn(SplashScreenActivity.this)){
+                    i = new Intent(SplashScreenActivity.this, PatternLockActivity.class);
+
+                }else {
+                    i = new Intent(SplashScreenActivity.this, LoginActivity.class);
+
+                }
+
+                startActivity(i);
 
                 // close this activity
                 finish();

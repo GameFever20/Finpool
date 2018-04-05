@@ -37,4 +37,6 @@ dependencies {
     implementation 'com.irozon.alertview:alertview:1.0.1'
     compile 'com.andrognito.patternlockview:patternlockview:1.0.0'
 
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.0.3'
+
 }
