@@ -15,30 +15,22 @@
         <activity
             android:name=".LoginActivity"
             android:label="Finpool"
-            android:theme="@style/AppTheme.NoActionBar">
-
-        </activity>
-        <activity android:name=".SplashScreenActivity">
-
-        </activity>
-
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".SplashScreenActivity"></activity>
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_main"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".PortfolioActivity"
+            android:label="@string/title_activity_portfolio"
             android:theme="@style/AppTheme.NoActionBar">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
-
-        <activity
-            android:name=".PortfolioActivity"
-            android:label="@string/title_activity_portfolio"
-            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ClientSelectionActivity"
             android:label="@string/title_activity_client_selection"
@@ -74,10 +66,11 @@
             android:name=".TransactionReportActivity"
             android:label="@string/title_activity_transaction_report"
             android:theme="@style/AppTheme.NoActionBar" />
-
-        <activity android:name=".PatternLockActivity">
-
-        </activity>
+        <activity android:name=".PatternLockActivity"></activity>
+        <activity
+            android:name=".ClientOverviewActivity"
+            android:label="@string/title_activity_client_overview"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

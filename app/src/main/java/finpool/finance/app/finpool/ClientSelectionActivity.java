@@ -14,6 +14,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -82,6 +83,9 @@ public class ClientSelectionActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
+        spinner = findViewById(R.id.clientSelection_group_spinner);
+
+
         clientAdapter = new ClientAdapter(clientArrayList, this);
 
         recyclerView.setAdapter(clientAdapter);
@@ -104,10 +108,10 @@ public class ClientSelectionActivity extends AppCompatActivity {
     public void onBackPressed() {
 
 
-        if (isSelectingGroup){
+        if (isSelectingGroup) {
             super.onBackPressed();
-        }else {
-            isSelectingGroup=true;
+        } else {
+            isSelectingGroup = true;
             showGroupList();
         }
 
@@ -168,8 +172,36 @@ public class ClientSelectionActivity extends AppCompatActivity {
 
                         groupArrayList.add(0, client);
 
+                        ArrayList<String> groupStringArrayList = new ArrayList<>();
+                        for (Client client1 : groupArrayList) {
+                            groupStringArrayList.add(client1.getName());
+                        }
 
-                        groupAdapter = new ClientAdapter(groupArrayList, ClientSelectionActivity.this);
+                        ArrayAdapter<String> groupAdapter = new ArrayAdapter<String>(ClientSelectionActivity.this, android.R.layout.simple_spinner_item, groupStringArrayList);
+
+                        spinner.setAdapter(groupAdapter);
+
+                        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                            @Override
+                            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
+
+
+                                fetchGroupDetails(groupArrayList.get(position).getId());
+                                selectedGroup = groupArrayList.get(position).getId();
+                                groupSlected = groupArrayList.get(position);
+
+                                isSelectingGroup = false;
+                                showDialog();
+                            }
+
+                            @Override
+                            public void onNothingSelected(AdapterView<?> adapterView) {
+
+                            }
+                        });
+
+
+                       /* groupAdapter = new ClientAdapter(groupArrayList, ClientSelectionActivity.this);
 
                         groupAdapter.setClickListener(new ClientAdapter.ClickListener() {
                             @Override
@@ -185,7 +217,7 @@ public class ClientSelectionActivity extends AppCompatActivity {
 
                         Log.d(TAG, "onResponse: " + groupArrayList);
 
-                        recyclerView.setAdapter(groupAdapter);
+                        recyclerView.setAdapter(groupAdapter);*/
 
 
                     }
@@ -251,7 +283,9 @@ public class ClientSelectionActivity extends AppCompatActivity {
                                 selectedClient = clientArrayList.get(position).getId();
                                 clientSelected = clientArrayList.get(position);
 
-                                showDialogChooser();
+                                //showDialogChooser();
+
+                                openClientOverview();
 
                             }
                         });
@@ -273,6 +307,21 @@ public class ClientSelectionActivity extends AppCompatActivity {
 
         VolleyManager.getInstance().addToRequestQueue(jsonArrayRequest, "Group request");
 
+
+    }
+
+    private void openClientOverview() {
+
+        Intent intent = new Intent(ClientSelectionActivity.this,ClientOverviewActivity.class);
+
+        intent.putExtra("id", selectedGroup);
+        intent.putExtra("client", selectedClient);
+
+        intent.putExtra("groupSelected", groupSlected);
+        intent.putExtra("clientSelected", clientSelected);
+
+
+        startActivity(intent);
 
     }
 
@@ -405,7 +454,6 @@ public class ClientSelectionActivity extends AppCompatActivity {
             e.printStackTrace();
         }
     }
-
 
 
 }

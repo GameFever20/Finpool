@@ -10,7 +10,14 @@
     tools:showIn="@layout/activity_client_selection">
 
 
+    <Spinner
+        android:id="@+id/clientSelection_group_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:prompt="@string/spinner_title"
+        android:spinnerMode="dialog">
 
+    </Spinner>
 
 
     <android.support.v7.widget.RecyclerView

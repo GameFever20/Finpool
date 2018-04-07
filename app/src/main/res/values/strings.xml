@@ -10,7 +10,7 @@
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="title_activity_portfolio">PortfolioActivity</string>
+    <string name="title_activity_portfolio">Portfolio</string>
     <string name="title_activity_scrolling">ScrollingActivity</string>
     <string name="large_text">
         "Material is the metaphor.\n\n"
@@ -110,4 +110,6 @@
     <string name="title_activity_reversal_report">ReversalReportActivity</string>
     <string name="title_activity_mfreport_detail">MFReportDetailActivity</string>
     <string name="title_activity_transaction_report">TransactionReportActivity</string>
+    <string name="title_activity_client_overview">ClientOverviewActivity</string>
+    <string name="spinner_title">Select Group</string>
 </resources>

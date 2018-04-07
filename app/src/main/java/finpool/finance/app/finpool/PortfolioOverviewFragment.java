@@ -16,11 +16,13 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.data.DataSet;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
+import com.github.mikephil.charting.utils.ColorTemplate;
 
 import org.json.JSONArray;
 
@@ -168,7 +170,10 @@ public class PortfolioOverviewFragment extends Fragment {
         label.add("Rp 6");
 
 
+        pieDataSet.setColors(ColorTemplate.VORDIPLOM_COLORS);
+
         PieData data = new PieData( pieDataSet);
+
 
         pieChart.setData(data);
     }
