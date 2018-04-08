@@ -398,6 +398,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_margin="2dp"
+                        android:onClick="onMFReportClick"
                         android:layout_weight="1"
                         android:orientation="vertical">
 
@@ -434,6 +435,7 @@
                         android:layout_gravity="center"
                         android:layout_margin="2dp"
                         android:layout_weight="1"
+                        android:onClick="onSIPReportClick"
                         android:orientation="vertical">
 
 
@@ -470,6 +472,7 @@
                         android:layout_gravity="center"
                         android:layout_margin="2dp"
                         android:layout_weight="1"
+                        android:onClick="onReversalReportClick"
                         android:orientation="vertical">
 
 
@@ -506,6 +509,7 @@
                         android:layout_gravity="center"
                         android:layout_margin="2dp"
                         android:layout_weight="1"
+                        android:onClick="onTransactionReportClick"
                         android:orientation="vertical">
 
 

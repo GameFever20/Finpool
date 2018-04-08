@@ -32,7 +32,7 @@ public class ClientOverviewActivity extends AppCompatActivity {
     private Client groupSlected;
     private Client clientSelected;
 
-    TextView  currentValueTextView, currentInvestedTextView, gainTextView, sensexTextView, divInvTextView, divPayTextView, cagrTextView, absReturnTextView;
+    TextView currentValueTextView, currentInvestedTextView, gainTextView, sensexTextView, divInvTextView, divPayTextView, cagrTextView, absReturnTextView;
     private ArrayList<MFTransaction> mfTransactionArrayList;
 
     TextView nameTextView;
@@ -44,6 +44,8 @@ public class ClientOverviewActivity extends AppCompatActivity {
         setContentView(R.layout.activity_client_overview);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+
 
 
         groupSlected = (Client) getIntent().getSerializableExtra("groupSelected");
@@ -62,10 +64,18 @@ public class ClientOverviewActivity extends AppCompatActivity {
         fetchMFTransaction(clientSelected.getId(), groupSlected.getId());
 
 
-
         nameTextView = findViewById(R.id.clientOverview_clientName_textView);
 
         nameTextView.setText(clientSelected.getName());
+
+
+        try{
+            getSupportActionBar().setTitle(clientSelected.getName());
+            getSupportActionBar().setSubtitle(groupSlected.getName());
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
 
     }
 
@@ -124,4 +134,40 @@ public class ClientOverviewActivity extends AppCompatActivity {
 
     }
 
+    public void onMFReportClick(View view) {
+        Intent intent = new Intent(this, MFReportActivity.class);
+
+        onReportClick(intent);
+    }
+
+    public void onSIPReportClick(View view) {
+        Intent intent = new Intent(this, SipReportActivity.class);
+
+        onReportClick(intent);
+    }
+
+    public void onReversalReportClick(View view) {
+        Intent intent = new Intent(this, ReversalReportActivity.class);
+
+        onReportClick(intent);
+
+    }
+
+    public void onTransactionReportClick(View view) {
+        Intent intent = new Intent(this, TransactionReportActivity.class);
+
+        onReportClick(intent);
+    }
+
+
+    public void onReportClick(Intent intent) {
+
+
+        intent.putExtra("groupSelected", groupSlected);
+        intent.putExtra("clientSelected", clientSelected);
+
+
+        startActivity(intent);
+
+    }
 }

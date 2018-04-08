@@ -110,7 +110,7 @@ public class MFReportActivity extends AppCompatActivity {
 
                                 Intent intent = new Intent(MFReportActivity.this, MFReportDetailActivity.class);
 
-                                intent.putExtra("client", client);
+                                intent.putExtra("client", clientSelected.getId());
                                 intent.putExtra("transaction", mfTransactionArrayList.get(position));
 
 

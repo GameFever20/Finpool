@@ -18,6 +18,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -102,18 +103,27 @@ public class ClientSelectionActivity extends AppCompatActivity {
 
         progress = new ProgressDialog(this);
 
+        FloatingActionButton floatingActionButton = findViewById(R.id.fab);
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(ClientSelectionActivity.this, "", Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
 
     @Override
     public void onBackPressed() {
 
+        super.onBackPressed();
 
-        if (isSelectingGroup) {
+     /*if (isSelectingGroup) {
             super.onBackPressed();
         } else {
             isSelectingGroup = true;
             showGroupList();
-        }
+        }*/
 
     }
 
@@ -177,7 +187,7 @@ public class ClientSelectionActivity extends AppCompatActivity {
                             groupStringArrayList.add(client1.getName());
                         }
 
-                        ArrayAdapter<String> groupAdapter = new ArrayAdapter<String>(ClientSelectionActivity.this, android.R.layout.simple_spinner_item, groupStringArrayList);
+                        ArrayAdapter<String> groupAdapter = new ArrayAdapter<String>(ClientSelectionActivity.this, android.R.layout.simple_spinner_dropdown_item, groupStringArrayList);
 
                         spinner.setAdapter(groupAdapter);
 
@@ -312,7 +322,7 @@ public class ClientSelectionActivity extends AppCompatActivity {
 
     private void openClientOverview() {
 
-        Intent intent = new Intent(ClientSelectionActivity.this,ClientOverviewActivity.class);
+        Intent intent = new Intent(ClientSelectionActivity.this, ClientOverviewActivity.class);
 
         intent.putExtra("id", selectedGroup);
         intent.putExtra("client", selectedClient);
@@ -456,4 +466,9 @@ public class ClientSelectionActivity extends AppCompatActivity {
     }
 
 
+    public void OngroupSelectClick(View view) {
+
+        spinner.performClick();
+
+    }
 }
