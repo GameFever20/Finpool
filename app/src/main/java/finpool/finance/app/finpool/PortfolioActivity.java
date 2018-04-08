@@ -40,12 +40,11 @@ public class PortfolioActivity extends AppCompatActivity {
     private void setupViewPager(ViewPager viewPager) {
 
 
-
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
 
-        adapter.addFragment(PortfolioOverviewFragment.newInstance("",""), "Overview");
+        adapter.addFragment(PortfolioOverviewFragment.newInstance("", ""), "Overview");
 
-        adapter.addFragment(PortfolioRecentFragment.newInstance("",""), "Recent Transaction");
+        adapter.addFragment(PortfolioRecentFragment.newInstance("", ""), "Recent Transaction");
 
         viewPager.setAdapter(adapter);
     }
@@ -57,7 +56,11 @@ public class PortfolioActivity extends AppCompatActivity {
         startActivity(intent);
 
 
+    }
 
+    public void onInvestOnline(View view) {
+        Intent intent = new Intent(PortfolioActivity.this, InvestOnlineMenuActivity.class);
+        startActivity(intent);
     }
 
 

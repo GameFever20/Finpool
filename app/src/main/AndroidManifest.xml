@@ -15,12 +15,12 @@
         <activity
             android:name=".LoginActivity"
             android:label="Finpool"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".SplashScreenActivity"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".SplashScreenActivity" />
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_main"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".PortfolioActivity"
             android:label="@string/title_activity_portfolio"
@@ -66,10 +66,14 @@
             android:name=".TransactionReportActivity"
             android:label="@string/title_activity_transaction_report"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".PatternLockActivity"></activity>
+        <activity android:name=".PatternLockActivity" />
         <activity
             android:name=".ClientOverviewActivity"
             android:label="@string/title_activity_client_overview"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".InvestOnlineMenuActivity"
+            android:label="@string/title_activity_invest_online_menu"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
