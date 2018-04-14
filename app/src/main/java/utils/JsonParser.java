@@ -24,6 +24,11 @@ public class JsonParser {
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
                 client.setName(jsonObject.getString("groupname"));
                 client.setId(jsonObject.getString("groupid"));
+                client.setEmail(jsonObject.getString("email"));
+                client.setMobileNumber(jsonObject.getString("mobile"));
+                client.setUserID(jsonObject.getString("userid"));
+                client.setPassword(jsonObject.getString("password"));
+
 
                 clientArrayList.add(client);
 

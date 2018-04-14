@@ -1,20 +1,13 @@
 package utils;
 
 import android.content.Context;
-import android.graphics.Color;
-import android.os.Build;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
-import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import finpool.finance.app.finpool.R;
 
@@ -22,7 +15,7 @@ import finpool.finance.app.finpool.R;
  * Created by bunny on 23/03/18.
  */
 
-public class ClientAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class GroupAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     Context context;
     private ArrayList<Client> clientArrayList;
@@ -32,12 +25,17 @@ public class ClientAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
 
     public class ClientViewHolder extends RecyclerView.ViewHolder {
-        public TextView title;
+        public TextView groupName,emailEditText, phoneNumberEditText, userIDEditText, passwordEditText;
 
         public ClientViewHolder(final View view) {
             super(view);
 
-            title = view.findViewById(R.id.clientAdapter_title_textView);
+            groupName = view.findViewById(R.id.groupAdapter_heading_textView);
+            emailEditText = view.findViewById(R.id.groupAdapter_email_textView);
+            phoneNumberEditText = view.findViewById(R.id.groupAdapter_phoneNumber_textView);
+            userIDEditText = view.findViewById(R.id.groupAdapter_userid_textView);
+            passwordEditText = view.findViewById(R.id.groupAdapter_password_textView);
+
 
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -62,7 +60,7 @@ public class ClientAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     }
 
 
-    public ClientAdapter(ArrayList<Client> clientArrayList, Context context) {
+    public GroupAdapter(ArrayList<Client> clientArrayList, Context context) {
         this.clientArrayList = clientArrayList;
         this.context = context;
     }
@@ -72,7 +70,7 @@ public class ClientAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.client_adapter_row_layout, parent, false);
+                .inflate(R.layout.group_adapter_row_layout, parent, false);
 
 
         return new ClientViewHolder(itemView);
@@ -86,7 +84,12 @@ public class ClientAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
         ClientViewHolder clientViewHolder = (ClientViewHolder) holder;
 
-        clientViewHolder.title.setText(clientArrayList.get(position).getName());
+        clientViewHolder.groupName.setText(clientArrayList.get(position).getName());
+        clientViewHolder.emailEditText.setText(clientArrayList.get(position).getEmail());
+        clientViewHolder.phoneNumberEditText.setText(clientArrayList.get(position).getMobileNumber());
+        clientViewHolder.userIDEditText.setText(clientArrayList.get(position).getUserID());
+        clientViewHolder.passwordEditText.setText(clientArrayList.get(position).getPassword());
+
 
 
     }

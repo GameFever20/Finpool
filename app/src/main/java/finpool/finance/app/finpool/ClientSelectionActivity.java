@@ -16,6 +16,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -71,6 +72,8 @@ public class ClientSelectionActivity extends AppCompatActivity {
 
     ProgressDialog progress;
 
+    AutoCompleteTextView autoCompleteTextView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -98,8 +101,6 @@ public class ClientSelectionActivity extends AppCompatActivity {
         fetchGroupList();
 
         initializeBottomSheet();
-        headingBottomSheetTextView = findViewById(R.id.clientActivity_bottomsheet_heading);
-
 
         progress = new ProgressDialog(this);
 
@@ -107,23 +108,64 @@ public class ClientSelectionActivity extends AppCompatActivity {
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(ClientSelectionActivity.this, "", Toast.LENGTH_SHORT).show();
+                openSearchDialog();
+                mBottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+                autoCompleteTextView.requestFocus();
             }
         });
+
+
+    }
+
+    private void openSearchDialog() {
+
+        final ArrayList<String> stringArrayList = new ArrayList<>();
+        for(Client client:clientArrayList){
+            stringArrayList.add(client.getName());
+        }
+
+        ArrayAdapter adapter = new ArrayAdapter(this,android.R.layout.simple_list_item_1,stringArrayList);
+
+        autoCompleteTextView.setAdapter(adapter);
+        autoCompleteTextView.setThreshold(1);
+
+
+
+       autoCompleteTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+           @Override
+           public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+               int position = stringArrayList.indexOf(autoCompleteTextView.getText().toString());
+
+               if (position != 0) {
+                   selectedGroup = "";
+                   groupSlected = new Client();
+                   groupSlected.setId("");
+               }
+               selectedClient = clientArrayList.get(position).getId();
+               clientSelected = clientArrayList.get(position);
+
+               //showDialogChooser();
+
+               openClientOverview();
+
+               autoCompleteTextView.setText("");
+
+           }
+       });
 
     }
 
     @Override
     public void onBackPressed() {
 
-        super.onBackPressed();
 
-     /*if (isSelectingGroup) {
-            super.onBackPressed();
+
+        if (mBottomSheetBehavior.getState() == BottomSheetBehavior.STATE_EXPANDED) {
+            mBottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
         } else {
-            isSelectingGroup = true;
-            showGroupList();
-        }*/
+            super.onBackPressed();
+        }
 
     }
 
@@ -159,6 +201,10 @@ public class ClientSelectionActivity extends AppCompatActivity {
 
             }
         });
+
+
+        autoCompleteTextView = findViewById(R.id.clientActivity_autoTextView);
+
 
 
     }
@@ -296,6 +342,11 @@ public class ClientSelectionActivity extends AppCompatActivity {
                                 //showDialogChooser();
 
                                 openClientOverview();
+
+                            }
+
+                            @Override
+                            public void onItemLongClick(int position, View view) {
 
                             }
                         });

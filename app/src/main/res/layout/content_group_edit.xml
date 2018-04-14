@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="finpool.finance.app.finpool.GroupEditActivity"
+    android:orientation="vertical"
+    tools:showIn="@layout/activity_group_edit">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/manageGroupActivity_recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_weight="1"
+        android:layout_above="@id/manageGroupActivity_addGroup"
+        >
+
+    </android.support.v7.widget.RecyclerView>
+
+    <Spinner
+        android:id="@+id/clientSelection_group_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:textAlignment="center"
+        android:prompt="@string/spinner_title"
+        android:spinnerMode="dialog">
+
+    </Spinner>
+
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        app:cardBackgroundColor="@color/colorPrimary"
+        android:id="@+id/manageGroupActivity_addGroup"
+        android:onClick="onAddMemberClick"
+        android:layout_alignParentBottom="true"
+        android:layout_height="44dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Add Member"
+            android:textColor="@color/colorWhite"
+            android:textSize="24sp"
+            android:layout_margin="8dp"
+            android:textAlignment="center"
+            />
+
+
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>

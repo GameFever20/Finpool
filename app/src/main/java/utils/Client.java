@@ -7,7 +7,7 @@ import java.io.Serializable;
  */
 
 public class Client implements Serializable{
-    String name, id,email;
+    String name, id,email, mobileNumber, userID, password;
 
     public String getName() {
         return name;
@@ -31,5 +31,29 @@ public class Client implements Serializable{
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getMobileNumber() {
+        return mobileNumber;
+    }
+
+    public void setMobileNumber(String mobileNumber) {
+        this.mobileNumber = mobileNumber;
+    }
+
+    public String getUserID() {
+        return userID;
+    }
+
+    public void setUserID(String userID) {
+        this.userID = userID;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

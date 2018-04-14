@@ -55,7 +55,7 @@ public class PatternLockActivity extends AppCompatActivity {
                     checkPatternLock(lockPattern.toString());
                 }
 
-                Toast.makeText(PatternLockActivity.this, "Lock pattern is - "+lockPattern, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(PatternLockActivity.this, "Lock pattern is - "+lockPattern, Toast.LENGTH_SHORT).show();
 
             }
 
@@ -79,14 +79,19 @@ public class PatternLockActivity extends AppCompatActivity {
 
     private void openMainActivity() {
 
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, PortfolioActivity.class);
         startActivity(intent);
+
+        finish();
 
     }
 
     private void setPatternLock(String pattern) {
 
         SettingManager.setPatternLock(this,pattern);
+        Toast.makeText(this, "Pattern saved", Toast.LENGTH_SHORT).show();
+
+        openMainActivity();
 
 
     }

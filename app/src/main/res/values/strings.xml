@@ -26,5 +26,7 @@
     <string name="title_activity_transaction_report">Transaction Report</string>
     <string name="title_activity_client_overview">Client</string>
     <string name="spinner_title">Select Group</string>
-    <string name="title_activity_invest_online_menu">InvestOnlineMenuActivity</string>
+    <string name="title_activity_invest_online_menu">Invest Online</string>
+    <string name="title_activity_manage_group">ManageGroupActivity</string>
+    <string name="title_activity_group_edit">GroupEditActivity</string>
 </resources>

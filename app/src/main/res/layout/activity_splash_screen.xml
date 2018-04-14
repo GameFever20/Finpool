@@ -11,6 +11,9 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColor="@color/colorWhite"
+        android:layout_gravity="center"
+        android:textAlignment="center"
         android:text="Welcome to Finpool\n Loading your data\n wait for 3 seconds" />
 
 

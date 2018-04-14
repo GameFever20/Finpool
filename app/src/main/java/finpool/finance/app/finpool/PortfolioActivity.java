@@ -63,6 +63,13 @@ public class PortfolioActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void onMangeGroupClick(View view) {
+
+        Intent intent = new Intent(PortfolioActivity.this, ManageGroupActivity.class);
+        startActivity(intent);
+
+    }
+
 
     public class ViewPagerAdapter extends FragmentPagerAdapter {
         private final List<Fragment> mFragmentList = new ArrayList<>();
