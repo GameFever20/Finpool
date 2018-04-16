@@ -1,6 +1,7 @@
 package finpool.finance.app.finpool;
 
 import android.content.Intent;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Toast;
@@ -23,7 +24,10 @@ public class PatternLockActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pattern_lock);
 
-        type = getIntent().getIntExtra("type",1);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
+
+        type = getIntent().getIntExtra("type", 1);
 
         mPatternLockView = (PatternLockView) findViewById(R.id.pattern_lock_view);
         mPatternLockView.addPatternLockListener(new PatternLockViewListener() {
@@ -42,16 +46,16 @@ public class PatternLockActivity extends AppCompatActivity {
 
                 StringBuilder lockPattern = new StringBuilder();
 
-                for (int i =0; i<pattern.size(); i++){
+                for (int i = 0; i < pattern.size(); i++) {
 
                     PatternLockView.Dot dot = pattern.get(i);
                     lockPattern.append(dot.getId());
 
                 }
 
-                if (type==2){
+                if (type == 2) {
                     setPatternLock(lockPattern.toString());
-                }else {
+                } else {
                     checkPatternLock(lockPattern.toString());
                 }
 
@@ -69,9 +73,9 @@ public class PatternLockActivity extends AppCompatActivity {
     private void checkPatternLock(String pattern) {
         String savedPattern = SettingManager.getPatternLock(this);
 
-        if (savedPattern.equalsIgnoreCase(pattern)){
+        if (savedPattern.equalsIgnoreCase(pattern)) {
             openMainActivity();
-        }else {
+        } else {
             Toast.makeText(this, "Wrong Pattern", Toast.LENGTH_SHORT).show();
         }
 
@@ -88,7 +92,7 @@ public class PatternLockActivity extends AppCompatActivity {
 
     private void setPatternLock(String pattern) {
 
-        SettingManager.setPatternLock(this,pattern);
+        SettingManager.setPatternLock(this, pattern);
         Toast.makeText(this, "Pattern saved", Toast.LENGTH_SHORT).show();
 
         openMainActivity();

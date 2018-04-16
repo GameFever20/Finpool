@@ -23,149 +23,182 @@
     <include layout="@layout/content_manage_group" />
 
 
-
-    <LinearLayout
+    <android.support.v7.widget.CardView
         android:id="@+id/manageGroupActivity_bottom_sheet"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/colorlightWhite"
         android:clipToPadding="true"
         android:orientation="vertical"
         app:behavior_hideable="true"
         app:behavior_peekHeight="0dp"
+        app:cardBackgroundColor="@color/colorlightWhite"
+        app:cardCornerRadius="4dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="4dp"
+        app:cardElevation="8dp"
         app:elevation="10dp"
-        android:background="@color/colorWhite"
         app:layout_behavior="android.support.design.widget.BottomSheetBehavior">
 
-
-
-
-
-        <android.support.v7.widget.CardView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardCornerRadius="0dp"
-            android:layout_marginLeft="4dp"
-            android:layout_marginRight="4dp"
-            android:layout_marginTop="4dp"
-            >
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="4dp"
-                android:orientation="vertical">
-
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Tap to select group"
-                    android:textStyle="bold"
-                    android:textColor="@color/colorPrimary"
-                    android:layout_marginLeft="4dp"
-                    android:textSize="14sp"
-                    />
-
-                <Spinner
-                    android:id="@+id/clientSelection_group_spinner"
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:textAlignment="center"
-                    android:prompt="@string/spinner_title"
-                    android:spinnerMode="dialog">
-
-                </Spinner>
-
-            </LinearLayout>
-
-        </android.support.v7.widget.CardView>
-
-
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-
-            android:layout_height="wrap_content">
-
-            <EditText
-                android:id="@+id/manageGroup_groupName_editText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Group Name" />
-
-        </android.support.design.widget.TextInputLayout>
-
-
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <EditText
-                android:id="@+id/manageGroup_emailId_editText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Email ID" />
-
-        </android.support.design.widget.TextInputLayout>
-
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <EditText
-                android:id="@+id/manageGroup_mobileNumber_editText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Mobile Number" />
-
-        </android.support.design.widget.TextInputLayout>
-
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <EditText
-                android:id="@+id/manageGroup_userID_editText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="User ID" />
-
-        </android.support.design.widget.TextInputLayout>
-
-
-        <android.support.v7.widget.CardView
-            android:id="@+id/manageGroupActivity_addGroup"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-android:onClick="onNextClick"            app:cardBackgroundColor="@color/colorPrimary">
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:text="Next"
+                android:layout_marginBottom="8dp"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="4dp"
+                android:layout_marginTop="8dp"
+                android:text="Enter Group Details"
                 android:textAlignment="center"
-                android:textColor="@color/colorWhite"
-                android:textSize="24sp" />
+                android:textColor="@color/colorPrimary"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginLeft="0dp"
+                android:layout_marginRight="0dp"
+                android:layout_marginTop="4dp"
+                app:cardBackgroundColor="@color/colorWhitish"
+                app:cardCornerRadius="0dp"
+                app:cardElevation="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    android:orientation="vertical">
 
 
-        </android.support.v7.widget.CardView>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="4dp"
+                        android:text="Select Group Admin"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="14sp"
+                        android:textStyle="normal" />
+
+                    <Spinner
+                        android:id="@+id/clientSelection_group_spinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="24dp"
+                        android:prompt="@string/spinner_title"
+                        android:spinnerMode="dialog"
+                        android:textAlignment="center">
+
+                    </Spinner>
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
 
 
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="4dp">
 
-    </LinearLayout>
+                <EditText
+                    android:id="@+id/manageGroup_groupName_editText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Group Name"
+                    android:textSize="14sp" />
+
+            </android.support.design.widget.TextInputLayout>
+
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="4dp">
+
+                <EditText
+                    android:id="@+id/manageGroup_emailId_editText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Email ID"
+                    android:textSize="14sp" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="4dp">
+
+                <EditText
+                    android:id="@+id/manageGroup_mobileNumber_editText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Mobile Number"
+                    android:textSize="14sp" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="4dp">
+
+                <EditText
+                    android:id="@+id/manageGroup_userID_editText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="User ID"
+                    android:textSize="14sp" />
+
+            </android.support.design.widget.TextInputLayout>
+
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/manageGroupActivity_addGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:onClick="onNextClick"
+                app:cardBackgroundColor="@color/colorPrimary"
+                app:cardCornerRadius="0dp"
+                app:cardElevation="2dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:text="Next"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
+
+
+            </android.support.v7.widget.CardView>
+
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
 
     <android.support.design.widget.FloatingActionButton
+        android:id="@+id/manageGroupActivity_next_fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@mipmap/ic_launcher"
-        app:layout_anchor="@id/manageGroupActivity_bottom_sheet"
-        app:layout_anchorGravity="end"
         android:layout_marginRight="16dp"
+        android:src="@mipmap/ic_launcher"
+        android:visibility="gone"
         app:fabSize="normal"
-        android:id="@+id/manageGroupActivity_next_fab"
-        />
-
+        app:layout_anchor="@id/manageGroupActivity_bottom_sheet"
+        app:layout_anchorGravity="end" />
 
 
 </android.support.design.widget.CoordinatorLayout>

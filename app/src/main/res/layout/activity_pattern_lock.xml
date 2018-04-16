@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,15 +8,41 @@
     android:background="@color/colorPrimary"
     tools:context="finpool.finance.app.finpool.PatternLockActivity">
 
+    <ImageView
+        android:id="@+id/patter_lock_image"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_above="@+id/pattern_lock_view"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/icon_lock_pattern" />
+
+
+    <TextView
+        android:id="@+id/pattern_heading_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/patter_lock_image"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Please Input Password"
+        android:textAlignment="center"
+        android:textColor="@color/colorWhite"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
 
     <com.andrognito.patternlockview.PatternLockView
         android:id="@+id/pattern_lock_view"
         android:layout_width="280dp"
         android:layout_height="280dp"
-        android:layout_gravity="bottom|center_horizontal"
-        android:layout_marginBottom="64dp" />
+        android:layout_marginTop="128dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="32dp" />
 
 
-
-
-</android.support.design.widget.CoordinatorLayout>
+</RelativeLayout>

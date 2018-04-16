@@ -109,12 +109,12 @@ public class ManageGroupActivity extends AppCompatActivity {
 
                 if (newState == BottomSheetBehavior.STATE_EXPANDED) {
 
-                    floatingActionButton.show();
+                    //floatingActionButton.show();
 
                 } else if (newState == BottomSheetBehavior.STATE_HIDDEN) {
-                    floatingActionButton.hide();
+                    //floatingActionButton.hide();
                 } else {
-                    floatingActionButton.hide();
+                  //  floatingActionButton.hide();
                 }
             }
 

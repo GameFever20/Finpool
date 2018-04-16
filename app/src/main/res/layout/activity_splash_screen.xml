@@ -1,20 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
+    android:background="@color/colorWhite"
     tools:context="finpool.finance.app.finpool.SplashScreenActivity">
 
+    <ImageView
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_above="@+id/splashscreen_main_heading_textview"
+        android:layout_centerInParent="true"
+        android:src="@drawable/invest_icon3" />
 
     <TextView
+        android:id="@+id/splashscreen_main_heading_textview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/colorWhite"
-        android:layout_gravity="center"
+        android:layout_centerInParent="true"
+        android:text="Finpool"
         android:textAlignment="center"
-        android:text="Welcome to Finpool\n Loading your data\n wait for 3 seconds" />
+        android:textColor="@color/colorPrimary"
+        android:textSize="44dp"
+        android:textStyle="bold" />
 
+    <TextView
+        android:id="@+id/splashscreen_sub_heading_textview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/splashscreen_main_heading_textview"
+        android:layout_centerInParent="true"
+        android:text="Manage Mutual Funds On the Go!"
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimary"
+        android:textSize="16dp"
+        android:textStyle="normal" />
 
-</android.support.design.widget.CoordinatorLayout>
+</RelativeLayout>
