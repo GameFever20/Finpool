@@ -88,11 +88,11 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ManageGroupActivity"
-            android:label="@string/title_activity_manage_group"
+            android:label="Manage Group"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".GroupEditActivity"
-            android:label="@string/title_activity_group_edit"
+            android:label="Group Detail"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
