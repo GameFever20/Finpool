@@ -33,7 +33,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:text="Reliance Small Cap Fund"
-                android:textColor="@color/headingColor"
+                android:textColor="@color/colorPrimary"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
@@ -45,7 +45,7 @@
                 android:layout_marginTop="2dp"
                 android:text="12345678"
                 android:textAlignment="viewStart"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/colorRed"
                 android:textSize="12sp" />
 
 
@@ -84,30 +84,28 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="4dp"
                 android:orientation="horizontal">
 
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:orientation="vertical">
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Amount"
-                        android:textAlignment="center"
                         android:textColor="@color/lightTextColor"
                         android:textSize="12sp" />
 
                     <TextView
                         android:id="@+id/transactionAdapter_amount_textView"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="18000"
-                        android:textAlignment="center"
                         android:textColor="@color/textColor"
                         android:textSize="14sp"
                         android:textStyle="bold" />
@@ -116,13 +114,13 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:orientation="vertical">
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Purchase Price"
                         android:textAlignment="center"
@@ -131,9 +129,8 @@
 
                     <TextView
                         android:id="@+id/transactionAdapter_purchasePrice_textView"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-
                         android:text="18250"
                         android:textAlignment="center"
                         android:textColor="@color/textColor"
@@ -144,25 +141,28 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginRight="8dp"
                     android:layout_weight="1"
                     android:orientation="vertical">
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="end"
                         android:text="Units"
-                        android:textAlignment="center"
+                        android:textAlignment="viewEnd"
                         android:textColor="@color/lightTextColor"
                         android:textSize="12sp" />
 
                     <TextView
                         android:id="@+id/transactionAdapter_unit_textView"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="end"
                         android:text="140"
-                        android:textAlignment="center"
+                        android:textAlignment="viewEnd"
                         android:textColor="@color/textColor"
                         android:textSize="14sp"
                         android:textStyle="bold" />
@@ -178,30 +178,28 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="4dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="4dp"
                 android:orientation="horizontal">
 
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:orientation="vertical">
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Scheme Type"
-                        android:textAlignment="center"
                         android:textColor="@color/lightTextColor"
                         android:textSize="12sp" />
 
                     <TextView
                         android:id="@+id/transactionAdapter_schemeType_textView"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="0.5676%"
-                        android:textAlignment="center"
                         android:textColor="@color/textColor"
                         android:textSize="14sp"
                         android:textStyle="bold" />
@@ -211,25 +209,28 @@
 
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginRight="8dp"
                     android:layout_weight="1"
                     android:orientation="vertical">
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="end"
                         android:text="Trans. Type"
-                        android:textAlignment="center"
+                        android:textAlignment="viewEnd"
                         android:textColor="@color/lightTextColor"
                         android:textSize="12sp" />
 
                     <TextView
                         android:id="@+id/transactionAdapter_transType_textView"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="end"
                         android:text="Redemption"
-                        android:textAlignment="center"
+                        android:textAlignment="viewEnd"
                         android:textColor="@color/textColor"
                         android:textSize="14sp"
                         android:textStyle="bold" />

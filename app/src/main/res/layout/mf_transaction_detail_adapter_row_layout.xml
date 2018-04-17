@@ -33,39 +33,37 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:text="Reliance Small Cap Fund"
-                android:textColor="@color/headingColor"
+                android:textColor="@color/colorPrimary"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="2dp"
                 android:orientation="horizontal">
 
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:orientation="vertical">
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:alpha="0.8"
                         android:text="Unit"
-                        android:textAlignment="center"
-                        android:textColor="@color/colorPrimary"
+                        android:textColor="@color/colorRed"
                         android:textSize="12sp" />
 
 
                     <TextView
                         android:id="@+id/mfAdapter_id_textView"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="5.24"
-                        android:textAlignment="center"
                         android:textColor="@color/colorPrimary"
                         android:textSize="14sp"
                         android:textStyle="bold" />
@@ -74,29 +72,27 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:orientation="vertical">
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:alpha="0.8"
                         android:text="Purchase"
                         android:textAlignment="center"
-                        android:textColor="@color/colorPrimary"
+                        android:textColor="@color/colorRed"
                         android:textSize="12sp" />
 
                     <TextView
                         android:id="@+id/mfAdapter_since_textView"
-                        android:layout_width="wrap_content"
-
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="18250"
-
                         android:textAlignment="center"
-                        android:textColor="@color/colorPrimary"
+                        android:textColor="@color/textColor"
                         android:textSize="14sp"
                         android:textStyle="bold" />
 
@@ -104,29 +100,30 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginRight="8dp"
                     android:layout_weight="1"
                     android:orientation="vertical">
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="end"
                         android:alpha="0.7"
                         android:text="Sensex"
-                        android:textAlignment="center"
-                        android:textColor="@color/colorPrimary"
+                        android:textAlignment="viewEnd"
+                        android:textColor="@color/colorRed"
                         android:textSize="12sp" />
 
                     <TextView
                         android:id="@+id/mfAdapter_name_textView"
                         android:layout_width="wrap_content"
-
                         android:layout_height="wrap_content"
+                        android:layout_gravity="end"
                         android:text="29871.1"
-
-                        android:textAlignment="center"
-                        android:textColor="@color/colorPrimary"
+                        android:textAlignment="viewEnd"
+                        android:textColor="@color/textColor"
                         android:textSize="14sp"
                         android:textStyle="bold" />
 
@@ -140,31 +137,28 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="2dp"
                 android:orientation="horizontal">
 
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:orientation="vertical">
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Amount"
-                        android:textAlignment="center"
                         android:textColor="@color/lightTextColor"
                         android:textSize="12sp" />
 
                     <TextView
                         android:id="@+id/mfAdapter_currentInv_textView"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="18000"
-
-                        android:textAlignment="center"
                         android:textColor="@color/textColor"
                         android:textSize="14sp"
                         android:textStyle="bold" />
@@ -174,13 +168,13 @@
 
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:orientation="vertical">
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="CAGR"
                         android:textAlignment="center"
@@ -189,11 +183,9 @@
 
                     <TextView
                         android:id="@+id/mfAdapter_cagr_textView"
-                        android:layout_width="wrap_content"
-
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="2000"
-
                         android:textAlignment="center"
                         android:textColor="@color/textColor"
                         android:textSize="14sp"
@@ -203,28 +195,29 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginRight="8dp"
                     android:layout_weight="1"
                     android:orientation="vertical">
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="end"
                         android:text="Current Val"
-                        android:textAlignment="center"
+                        android:textAlignment="viewEnd"
                         android:textColor="@color/lightTextColor"
                         android:textSize="12sp" />
 
                     <TextView
                         android:id="@+id/mfAdapter_currentVal_textView"
                         android:layout_width="wrap_content"
-
                         android:layout_height="wrap_content"
+                        android:layout_gravity="end"
                         android:text="18250"
-
-                        android:textAlignment="center"
-                        android:textColor="@color/textColor"
+                        android:textAlignment="viewEnd"
+                        android:textColor="@color/colorPrimary"
                         android:textSize="14sp"
                         android:textStyle="bold" />
 
@@ -239,31 +232,28 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="4dp"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="2dp"
                 android:orientation="horizontal">
 
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:orientation="vertical">
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Div Inv"
-                        android:textAlignment="center"
                         android:textColor="@color/lightTextColor"
                         android:textSize="12sp" />
 
                     <TextView
                         android:id="@+id/mfAdapter_divInv_textView"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="0.12"
-
-                        android:textAlignment="center"
                         android:textColor="@color/textColor"
                         android:textSize="14sp"
                         android:textStyle="bold" />
@@ -272,13 +262,13 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:orientation="vertical">
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Div Pay"
                         android:textAlignment="center"
@@ -287,38 +277,40 @@
 
                     <TextView
                         android:id="@+id/mfAdapter_divPay_textView"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="0.567"
                         android:textAlignment="center"
                         android:textColor="@color/textColor"
                         android:textSize="14sp"
-
                         android:textStyle="bold" />
 
 
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginRight="8dp"
                     android:layout_weight="1"
                     android:orientation="vertical">
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="end"
                         android:text="Abs Return"
-                        android:textAlignment="center"
+                        android:textAlignment="viewEnd"
                         android:textColor="@color/lightTextColor"
                         android:textSize="12sp" />
 
                     <TextView
                         android:id="@+id/mfAdapter_absReturn_textView"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="end"
                         android:text="0.5676%"
-                        android:textAlignment="center"
+                        android:textAlignment="viewEnd"
                         android:textColor="@color/textColor"
                         android:textSize="14sp"
                         android:textStyle="bold" />

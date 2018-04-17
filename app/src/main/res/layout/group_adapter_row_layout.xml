@@ -36,8 +36,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Reliance Small Cap Fund"
-                android:textColor="@color/headingColor"
-                android:textSize="16sp"
+                android:textColor="@color/colorPrimary"
+                android:textSize="14sp"
                 android:textStyle="bold" />
 
 
@@ -45,7 +45,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="2dp"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="2dp"
                 android:orientation="horizontal">
 
 
@@ -59,8 +59,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Phone Number"
+                        android:alpha="0.7"
                         android:textAlignment="center"
-                        android:textColor="@color/lightTextColor"
+                        android:textColor="@color/colorRed"
                         android:textSize="12sp" />
 
                     <TextView
@@ -90,7 +91,8 @@
                         android:text="Email"
                         android:textAlignment="viewEnd"
                         android:layout_gravity="end"
-                        android:textColor="@color/lightTextColor"
+                        android:alpha="0.8"
+                        android:textColor="@color/colorRed"
                         android:textSize="12sp" />
 
                     <TextView

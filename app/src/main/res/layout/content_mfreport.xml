@@ -130,7 +130,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="2dp"
-                    android:layout_marginLeft="2dp"
+                    android:layout_marginLeft="4dp"
                     android:layout_marginRight="2dp"
                     android:layout_marginTop="2dp"
                     android:orientation="vertical">
@@ -143,17 +143,16 @@
 
 
                         <LinearLayout
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:orientation="vertical">
 
                             <TextView
-                                android:layout_width="wrap_content"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="Current"
-                                android:textAlignment="center"
-                                android:textColor="@color/colorWhitish"
+                                android:textColor="@color/colorlightWhite"
                                 android:textSize="12sp" />
 
                             <TextView
@@ -161,8 +160,6 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="2000"
-
-                                android:textAlignment="center"
                                 android:textColor="@color/colorWhite"
                                 android:textSize="14sp"
                                 android:textStyle="bold" />
@@ -172,13 +169,13 @@
 
 
                         <LinearLayout
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:orientation="vertical">
 
                             <TextView
-                                android:layout_width="wrap_content"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="Invested"
                                 android:textAlignment="center"
@@ -187,7 +184,7 @@
 
                             <TextView
                                 android:id="@+id/mfReport_currentInvested_textView"
-                                android:layout_width="wrap_content"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="6"
                                 android:textAlignment="center"
@@ -200,13 +197,13 @@
 
 
                         <LinearLayout
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:orientation="vertical">
 
                             <TextView
-                                android:layout_width="wrap_content"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="Gain"
                                 android:textAlignment="center"
@@ -215,7 +212,7 @@
 
                             <TextView
                                 android:id="@+id/mfReport_gain_textView"
-                                android:layout_width="wrap_content"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="1824450"
                                 android:textAlignment="center"
@@ -227,25 +224,28 @@
                         </LinearLayout>
 
                         <LinearLayout
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginRight="8dp"
                             android:layout_weight="1"
                             android:orientation="vertical">
 
                             <TextView
-                                android:layout_width="wrap_content"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:layout_gravity="end"
                                 android:text="Sensex"
-                                android:textAlignment="center"
+                                android:textAlignment="viewEnd"
                                 android:textColor="@color/colorWhitish"
                                 android:textSize="12sp" />
 
                             <TextView
                                 android:id="@+id/mfReport_sensex_textView"
-                                android:layout_width="wrap_content"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:layout_gravity="end"
                                 android:text="11132"
-                                android:textAlignment="center"
+                                android:textAlignment="viewEnd"
                                 android:textColor="@color/colorWhite"
                                 android:textSize="14sp"
                                 android:textStyle="bold" />
@@ -259,30 +259,28 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="4dp"
-                        android:layout_marginTop="6dp"
+                        android:layout_marginTop="2dp"
                         android:orientation="horizontal">
 
 
                         <LinearLayout
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:orientation="vertical">
 
                             <TextView
-                                android:layout_width="wrap_content"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="Div Inv"
-                                android:textAlignment="center"
                                 android:textColor="@color/colorWhitish"
                                 android:textSize="12sp" />
 
                             <TextView
                                 android:id="@+id/mfReport_divInv_textView"
-                                android:layout_width="wrap_content"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="0"
-                                android:textAlignment="center"
                                 android:textColor="@color/colorWhite"
                                 android:textSize="14sp"
                                 android:textStyle="bold" />
@@ -292,13 +290,13 @@
 
 
                         <LinearLayout
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:orientation="vertical">
 
                             <TextView
-                                android:layout_width="wrap_content"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="Div Pay"
                                 android:textAlignment="center"
@@ -307,7 +305,7 @@
 
                             <TextView
                                 android:id="@+id/mfReport_divPay_textView"
-                                android:layout_width="wrap_content"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="0"
                                 android:textAlignment="center"
@@ -319,13 +317,13 @@
                         </LinearLayout>
 
                         <LinearLayout
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:orientation="vertical">
 
                             <TextView
-                                android:layout_width="wrap_content"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="CAGR"
                                 android:textAlignment="center"
@@ -334,7 +332,7 @@
 
                             <TextView
                                 android:id="@+id/mfReport_cagr_textView"
-                                android:layout_width="wrap_content"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="1.62%"
                                 android:textAlignment="center"
@@ -346,25 +344,28 @@
                         </LinearLayout>
 
                         <LinearLayout
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginRight="8dp"
                             android:layout_weight="1"
                             android:orientation="vertical">
 
                             <TextView
-                                android:layout_width="wrap_content"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:layout_gravity="end"
                                 android:text="Abs.Rtn."
-                                android:textAlignment="center"
+                                android:textAlignment="viewEnd"
                                 android:textColor="@color/colorWhitish"
                                 android:textSize="12sp" />
 
                             <TextView
                                 android:id="@+id/mfReport_absReturn_textView"
-                                android:layout_width="wrap_content"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:layout_gravity="end"
                                 android:text="-2.4324"
-                                android:textAlignment="center"
+                                android:textAlignment="viewEnd"
                                 android:textColor="@color/colorWhite"
                                 android:textSize="14sp"
                                 android:textStyle="bold" />
